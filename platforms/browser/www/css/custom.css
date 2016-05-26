@@ -1,0 +1,18 @@
+body {
+    font-family: 'Source Sans Pro', sans-serif;
+}
+
+.form-group {
+    text-transform: capitalize;
+}
+
+.flex-container {
+    display: -webkit-box;
+    display: -webkit-flex;
+    display: -ms-flexbox;
+    display: flex;
+}
+
+.flex-item {
+    align-items: center;
+}

@@ -1,0 +1,19 @@
+body {
+    font-family: 'Source Sans Pro', sans-serif;
+}
+
+.form-group {
+    text-transform: capitalize;
+}
+#login-screen{
+    display:table;
+    width: 100%;
+    height: 100%;
+}
+
+#login-form{
+    display: table-cell;
+    vertical-align: middle;
+    width:100%;
+    height: 100%;
+}
