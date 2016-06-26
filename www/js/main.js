@@ -21,4 +21,14 @@ $(function () {
         });
     });
 
+//  Ends login form 
+
+
+    $("#signup-form form").submit(function () {
+        alert();
+        //preveneting the default form submit event/behaviour/action
+        event.preventDefault();
+        console.log(this);
+    });
+
 });
