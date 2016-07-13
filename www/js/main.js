@@ -23,13 +23,14 @@ $(function () {
 
 //  Ends login form
 
-        console.log("loaded");
         $("#signup-form form").submit(function () {
             console.log("submitting");
             //preveneting the default form submit event/behaviour/action
             event.preventDefault();
 
         });
+
+        
 
     });
 });
