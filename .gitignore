@@ -105,6 +105,10 @@ Android/assets/
 bin/
 gen/
 
+#build/generated files, just run phonegap build to obtain them
+platforms
+plugins
+
 # Local configuration file (sdk path, etc)
 local.properties
 
