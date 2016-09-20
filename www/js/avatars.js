@@ -20,7 +20,7 @@ $(function () {
             },
             success: function (data) {
                 data.forEach(function (avatarUrl) {
-                    $("#avatars .row").append("<img src='" + avatarUrl + "' class='col-xs-4 img-responsive img-circle'/>");
+                    $("#avatars .row").append("<img src='" + avatarUrl + "' class='col-xs-4 col-md-2 col-lg-2 img-responsive img-circle'/>");
                 });
                 /* adding interval since jquery mobile allows to call hide/show loader events
                  only on pageshow event or inside setInterval, refer to  http://stackoverflow.com/a/16277865/1609548*/
