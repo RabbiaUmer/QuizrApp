@@ -28,7 +28,16 @@ p::first-letter {
     height: 100%;
 }
 
-/* Elements specific CSS*/
+.link {
+    text-align: center;
+}
+
+.link a {
+    text-decoration: none;
+    text-transform: capitalize;
+}
+
+/* Login screen styles */
 
 #login-screen {
     display: -ms-flexbox;
@@ -46,6 +55,8 @@ p::first-letter {
     width: 100%;
 }
 
+/*Signup screen styles*/
+
 #signup-screen {
     display: -ms-flexbox;
     display: -webkit-flex;
@@ -61,13 +72,4 @@ p::first-letter {
 #signup-form {
     width: 100%;
 
-}
-
-.link {
-    text-align: center;
-}
-
-.link a {
-    text-decoration: none;
-    text-transform: capitalize;
 }
