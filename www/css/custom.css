@@ -37,6 +37,12 @@ p::first-letter {
     text-transform: capitalize;
 }
 
+/* Atomic classes */
+
+.mb1{
+    margin-bottom: 1em;
+}
+
 /* Login screen styles */
 
 #login-screen {
