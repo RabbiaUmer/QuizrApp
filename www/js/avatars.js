@@ -3,7 +3,10 @@
  */
 
 $(function () {
-    $(document).on("pagecreate", function (event) {
+
+    // use one instead of on, so that we don't have multiple pagecreate events attached to the same documents,
+    // reference here http://stackoverflow.com/a/22585583/1609548 , https://api.jquery.com/one/
+    $(document).one("pagecreate", function (event) {
         /* adding interval since jquery mobile allows to call hide/show loader events
          only on pageshow event or inside setInterval, refer to  http://stackoverflow.com/a/16277865/1609548*/
 
