@@ -15,6 +15,10 @@ p::first-letter {
     text-transform: capitalize;
 }
 
+.center {
+    text-align: center;
+}
+
 .vcenter-container {
     display: table;
     width: 100%;
@@ -39,7 +43,7 @@ p::first-letter {
 
 /* Atomic classes */
 
-.mb1{
+.mb1 {
     margin-bottom: 1em;
 }
 

@@ -1,33 +1,56 @@
 $(function () {
-    $(document).on("pagecreate", function (event) {
-        //Handling the login form
-        $("#login-form form").submit(function (event) {
 
-            //preveneting the default form submit event/behaviour/action
-            event.preventDefault();
-            var userEmail = $(this).find("#login-email").val();
-            var userPassword = $(this).find("#login-password").val();
-            $.ajax({
-                type: "POST",
-                url: 'http://localhost:8080/login',
-                data: {
-                    email: userEmail,
-                    password: userPassword
-                },
-                success: function (response) {
-                    console.log(response);
-                },
-                dataType: "json"
-            });
-        });
 
-//  Ends login form
+  //Handling the login form
+  $('#login-form form').submit(function (event) {
 
-        $("#signup-form form").submit(function () {
-            console.log("submitting");
-            //preveneting the default form submit event/behaviour/action
-            event.preventDefault();
+    // if there is already error message added during previous attempt then remove that first
+    removeLoginError();
 
-        });
+    var userEmail = $(this).find("#login-email").val();
+    var userPassword = $(this).find("#login-password").val();
+
+    $.ajax({
+      type: "POST",
+      url: 'http://localhost:8000/login',
+      contentType: 'application/x-www-form-urlencoded; charset=UTF-8',
+      data: {
+        email: userEmail,
+        password: userPassword
+      },
+      success: function (res) {
+        console.log(res)
+        if (res.loggedIn === "true") {
+          // openHomeScreen();
+        } else {
+          addLoginError();
+        }
+      },
+      dataType: "json"
     });
+
+    event.preventDefault();
+  });
+
+
+  // Removing errors on focus
+  $('#login-form form').find("#login-email, #login-password").focus(function () {
+    // if there is already error message added during previous attempt then remove that on focus
+    removeLoginError();
+  });
+
+  // helper functions below (used in code above)
+  function openHomeScreen() {
+    $.mobile.navigate("/home.html");
+  }
+
+  function addLoginError() {
+    $('#login-form form')
+      .append('<p class="center login-error">Please check your email or password!</p>');
+  }
+
+  function removeLoginError() {
+    $('p.login-error').remove();
+  }
+
 });
