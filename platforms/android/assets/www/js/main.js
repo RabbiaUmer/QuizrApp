@@ -13,15 +13,14 @@ $(function () {
     $.ajax({
       type: "POST",
       url: 'http://localhost:8000/login',
-      contentType: 'application/x-www-form-urlencoded; charset=UTF-8',
+      // contentType: 'application/x-www-form-urlencoded; charset=UTF-8',
       data: {
         email: userEmail,
         password: userPassword
       },
       success: function (res) {
-        console.log(res)
         if (res.loggedIn === "true") {
-          // openHomeScreen();
+          openHomeScreen();
         } else {
           addLoginError();
         }
