@@ -19,7 +19,9 @@ $(function () {
         password: userPassword
       },
       success: function (res) {
-        if (res.loggedIn === "true") {
+        if (res.success === true) {
+          var localStorage = window.localStorage;
+          localStorage.setItem("user-token", res.token);
           openHomeScreen();
         } else {
           addLoginError();
