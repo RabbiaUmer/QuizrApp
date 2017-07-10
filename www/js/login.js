@@ -39,7 +39,13 @@ $('#login-form form').find("#login-email, #login-password").focus(function () {
 
 // helper functions below (used in code above)
 function openHomeScreen() {
-  $.mobile.navigate("/home.html");
+  $(':mobile-pagecontainer').pagecontainer("change", "home.html", {
+    role: "page",
+    transition: "fade",
+    changeHash: false,
+    reverse: true,
+    showLoadMsg: true
+  })
 }
 
 function addLoginError() {
