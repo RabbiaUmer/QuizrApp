@@ -33,5 +33,44 @@
 
 <body>
 </div>
+<script type="text/javascript" charset="utf-8" src="cordova.js"></script>
+<script>
+  // Wait for device API libraries to load
+  //
+  document.addEventListener("deviceready", onDeviceReady, false);
+
+  // device APIs are available
+  function onDeviceReady() {
+
+    navigator.splashscreen.show();
+
+    if (window.localStorage.getItem("user-token")) {
+      setTimeout(function () {
+        navigator.splashscreen.hide();
+      }, 3000);
+
+      $(':mobile-pagecontainer').pagecontainer("change", "home.html", {
+        role: "page",
+        transition: "fade",
+        changeHash: false,
+        reverse: true,
+        showLoadMsg: true
+      })
+    } else {
+
+      setTimeout(function () {
+        navigator.splashscreen.hide();
+      }, 3000);
+
+      $(':mobile-pagecontainer').pagecontainer("change", "login.html", {
+        role: "page",
+        transition: "fade",
+        changeHash: false,
+        reverse: true,
+        showLoadMsg: true
+      })
+    }
+  }
+</script>
 </body>
 </html>
