@@ -2,7 +2,7 @@
 <widget id="com.rabbiaumer.fyp.project" version="1.0.0" xmlns="http://www.w3.org/ns/widgets">
     <name>Quizr</name>
     <description>Hello World sample application that responds to the deviceready event.</description>
-    <author email="support@phonegap.com" href="http://phonegap.com">PhoneGap Team</author>
+    <author email="support@phonegap.com" href="http://phonegap.com">Hafiza Rabbia Umer</author>
     <content src="index.html"/>
     <preference name="DisallowOverscroll" value="true"/>
     <preference name="android-minSdkVersion" value="14"/>
