@@ -1,28 +1,40 @@
-
 <!-- Start of first page -->
 <div id="login-screen" class="" data-role="page">
   <div id="login-form" data-role="content">
-
+    
     <form>
-      <div class="form-group animated bounce">
-        <input name="email" type="email" class="form-control" id="login-email" placeholder="Email" required>
+      <div class="form-group">
+        <input name="email" type="email" class="form-control" id="login-email" placeholder="Email" autocomplete="off"
+               required>
       </div>
-      <div class="form-group animated bounce">
-        <input name="password" type="password" class="form-control" id="login-password" placeholder="Password" required>
+      <div class="form-group">
+        <input name="password" type="password" class="form-control" id="login-password" placeholder="Password"
+               autocomplete="off" required>
       </div>
-
-      <button type="submit" data-corners="false" data-enhanced="true" class="btn btn-default">Login
-      </button>
+      
+      <!-- using jquery mobile classes for login button -->
+      <div class="ui-input-btn ui-btn ui-corner-all ui-shadow">
+        Login
+        <input id="login-btn" type="submit" data-corners="false" data-enhanced="true" value="Login">
+      </div>
     </form>
-
+    
     <p class="link">Not a member? <a href="signup-screen.html"
                                      data-transition="slide">Signup
       here!</a></p>
-
-    <p class="link">Not a member? <a href="categories.html"
-                                     data-transition="slide">Categories
-      here!</a></p>
+    
+    <p class="link"><a href="categories.html"
+                       data-transition="slide">Categories
+      page for testing!</a></p>
+    
+    <p class="link"><a href="avatars.html"
+                       data-transition="slide">Avatar
+      page for testing!</a></p>
+    
+    <p class="link"><a href="home.html"
+                       data-transition="slide">Home
+      page for testing!</a></p>
+  
   </div><!-- /content -->
+  <script type="text/javascript" src="js/login.js"></script>
 </div><!-- /page -->
-
-<scrip src=""></scrip>
