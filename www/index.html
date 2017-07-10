@@ -38,6 +38,11 @@
   // Wait for device API libraries to load
   //
   document.addEventListener("deviceready", onDeviceReady, false);
+  document.addEventListener("backbutton", onBackButton, false);
+  
+  function onBackButton() {
+    navigator.app.exitApp();
+  }
 
   // device APIs are available
   function onDeviceReady() {
