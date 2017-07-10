@@ -42,7 +42,7 @@ function openHomeScreen() {
   $(':mobile-pagecontainer').pagecontainer("change", "home.html", {
     role: "page",
     transition: "fade",
-    changeHash: false,
+    changeHash: true,
     reverse: true,
     showLoadMsg: true
   })

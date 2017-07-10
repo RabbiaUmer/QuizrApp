@@ -9,7 +9,7 @@ $(function () {
     $(':mobile-pagecontainer').pagecontainer("change", "login.html", {
       role: "page",
       transition: "fade",
-      changeHash: false,
+      changeHash: true,
       reverse: true,
       showLoadMsg: true
     })
