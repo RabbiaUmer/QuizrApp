@@ -9,7 +9,7 @@ $('#login-form form').submit(function (event) {
 
   $.ajax({
     type: "POST",
-    url: 'http://localhost:8000/login',
+    url: 'https://programmingquizlearningapp-sqnmzjpjuz.now.sh/login',
     // contentType: 'application/x-www-form-urlencoded; charset=UTF-8',
     data: {
       email: userEmail,
