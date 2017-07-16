@@ -41,8 +41,14 @@
   document.addEventListener("deviceready", onDeviceReady, false);
   document.addEventListener("backbutton", onBackButton, false);
 
+  // Handle the logic for the back-button for entire app here, since the event is attached to the document
   function onBackButton() {
-    navigator.app.exitApp();
+    var pageName = $(":mobile-pagecontainer").pagecontainer("getActivePage").attr("id");
+    if (pageName === 'login-screen') {
+      navigator.app.exitApp();
+    } else {
+      navigator.app.backHistory();
+    }
   }
 
   // device APIs are available
