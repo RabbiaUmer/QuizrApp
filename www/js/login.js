@@ -56,15 +56,3 @@ function addLoginError() {
 function removeLoginError() {
   $('p.login-error').remove();
 }
-
-// Determine what to do when user has pressed back button on another screen (signup screen)
-document.addEventListener("backbutton", onBackButton, false);
-
-function onBackButton() {
-  // exit the app if the user token has been set up in the local storage
-  // which ultimately means that we're returning back from signup screen and user has already been logged in after signup
-  if (!window.localStorage.getItem("user-token")) {
-    navigator.app.exitApp();
-  }
-  // if the user token has not been set up, nothing would happen and we would see a notmal login screen on back button press
-}
