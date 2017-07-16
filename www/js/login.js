@@ -1,5 +1,6 @@
 //Handling the login form
 $('#login-form form').submit(function (event) {
+  $("#login-btn").prop("disabled", true);
 
   // if there is already error message added during previous attempt then remove that first
   removeLoginError();
@@ -20,6 +21,7 @@ $('#login-form form').submit(function (event) {
         var localStorage = window.localStorage;
         localStorage.setItem("user-token", res.token);
         openHomeScreen();
+        $("#login-btn").prop("disabled", false);
       } else {
         addLoginError();
       }
@@ -49,10 +51,12 @@ function openHomeScreen() {
 }
 
 function addLoginError() {
+  $("#login-btn").prop("disabled", true);
   $('#login-form form')
-    .append('<p class="center login-error">Please check your email or password!</p>');
+    .append('<p class="center login-error bg-danger">Please check your email or password!</p>');
 }
 
 function removeLoginError() {
+  $("#login-btn").prop("disabled", false);
   $('p.login-error').remove();
 }
