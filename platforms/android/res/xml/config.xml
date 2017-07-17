@@ -6,13 +6,6 @@
     <feature name="Camera">
         <param name="android-package" value="org.apache.cordova.camera.CameraLauncher" />
     </feature>
-    <feature name="File">
-        <param name="android-package" value="org.apache.cordova.file.FileUtils" />
-        <param name="onload" value="true" />
-    </feature>
-    <feature name="Capture">
-        <param name="android-package" value="org.apache.cordova.mediacapture.Capture" />
-    </feature>
     <feature name="Contacts">
         <param name="android-package" value="org.apache.cordova.contacts.ContactManager" />
     </feature>
@@ -28,6 +21,10 @@
     <feature name="Notification">
         <param name="android-package" value="org.apache.cordova.dialogs.Notification" />
     </feature>
+    <feature name="File">
+        <param name="android-package" value="org.apache.cordova.file.FileUtils" />
+        <param name="onload" value="true" />
+    </feature>
     <feature name="FileTransfer">
         <param name="android-package" value="org.apache.cordova.filetransfer.FileTransfer" />
     </feature>
@@ -42,6 +39,9 @@
     </feature>
     <feature name="Media">
         <param name="android-package" value="org.apache.cordova.media.AudioHandler" />
+    </feature>
+    <feature name="Capture">
+        <param name="android-package" value="org.apache.cordova.mediacapture.Capture" />
     </feature>
     <feature name="NetworkStatus">
         <param name="android-package" value="org.apache.cordova.networkinformation.NetworkManager" />
@@ -84,7 +84,6 @@
     <splash density="land-xhdpi" src="www/res/screen/android/screen-xhdpi-landscape.png" />
     <splash density="land-xxhdpi" src="www/res/screen/android/screen-xxhdpi-landscape.png" />
     <splash density="land-xxxhdpi" src="www/res/screen/android/screen-xxxhdpi-landscape.png" />
-    <splash density="port-ldpi" src="www/res/screen/android/screen-ldpi-portrait.png." />
     <splash density="port-mdpi" src="www/res/screen/android/screen-mdpi-portrait.png" />
     <splash density="port-hdpi" src="www/res/screen/android/screen-hdpi-portrait.png" />
     <splash density="port-xhdpi" src="www/res/screen/android/screen-xhdpi-portrait.png" />
