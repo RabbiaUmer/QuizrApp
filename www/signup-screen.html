@@ -1,25 +1,31 @@
 <!-- Start of second page -->
 <div id="signup-screen" data-role="page">
-
-    <div id="signup-form" data-role="content">
-        <form>
-            <div class="form-group">
-                <input type="text" class="form-control" name="firstName" id="firstName" placeholder="First name">
-            </div>
-            <div class="form-group">
-                <input type="text" class="form-control" name="lastName" id="lastName" placeholder="Last name">
-            </div>
-            <div class="form-group">
-                <input type="email" class="form-control" name="email" id="email" placeholder="Email">
-            </div>
-            <div class="form-group">
-                <input type="password" class="form-control" name="password" id="password" placeholder="Password">
-            </div>
-            <button type="submit" class="btn btn-default">Signup</button>
-        </form>
-        <p class="link">Already a member? <a href="index.html"
-                                             data-transition="slide">Login
-            here!</a></p>
-    </div>
-    <script src="js/signup.js"></script>
+  
+  <div id="signup-form" data-role="content">
+    <form>
+      <!--<div class="form-group">-->
+      <!--<input type="text" class="form-control" name="firstName" id="firstName" placeholder="First name">-->
+      <!--</div>-->
+      <!--<div class="form-group">-->
+      <!--<input type="text" class="form-control" name="lastName" id="lastName" placeholder="Last name">-->
+      <!--</div>-->
+      <div class="form-group">
+        <input id="signup-email" type="email" class="form-control" name="email" placeholder="Email">
+      </div>
+      <div class="form-group">
+        <input id="signup-password" type="password" class="form-control" name="password"
+               placeholder="Password">
+      </div>
+      
+      <!-- using jquery mobile classes for login button -->
+      <div class="ui-input-btn ui-btn ui-corner-all ui-shadow">
+        Signup
+        <input id="signup-btn" type="submit" data-corners="false" data-enhanced="true" value="Signup">
+      </div>
+    </form>
+    <p class="link">Already a member? <a href="index.html"
+                                         data-transition="slide">Login
+      here!</a></p>
+  </div>
+  <script src="js/signup.js"></script>
 </div><!-- /page -->
