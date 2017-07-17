@@ -52,11 +52,12 @@ function openHomeScreen() {
 
 function addLoginError() {
   $("#login-btn").prop("disabled", true);
-  $('#login-form form')
-    .append('<p class="center login-error bg-danger">Please check your email or password!</p>');
+  $('<p class="center login-error bg-danger">Please check your email or password!</p>').hide().appendTo('#login-form form').slideDown(500);
 }
 
 function removeLoginError() {
   $("#login-btn").prop("disabled", false);
-  $('p.login-error').remove();
+  $('p.login-error').slideUp(500, function () {
+    $('p.login-error').remove();
+  });
 }
