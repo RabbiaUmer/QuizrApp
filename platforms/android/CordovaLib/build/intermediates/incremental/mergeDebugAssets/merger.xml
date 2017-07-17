@@ -1,2 +1,2 @@
 <?xml version="1.0" encoding="utf-8"?>
-<merger version="3"><dataSet config="main"><source path="/Users/umerhassan/Documents/Rabbia FYP/New/QuizrApp/platforms/android/CordovaLib/assets"/></dataSet><dataSet config="debug"><source path="/Users/umerhassan/Documents/Rabbia FYP/New/QuizrApp/platforms/android/CordovaLib/src/debug/assets"/></dataSet></merger>
+<merger version="3"><dataSet config="main"><source path="E:\FYP2\QuizrApp\platforms\android\CordovaLib\assets"/><source path="E:\FYP2\QuizrApp\platforms\android\CordovaLib\build\generated\assets\shaders\debug"/></dataSet><dataSet config="debug"><source path="E:\FYP2\QuizrApp\platforms\android\CordovaLib\src\debug\assets"/></dataSet></merger>

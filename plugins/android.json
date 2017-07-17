@@ -13,9 +13,6 @@
         "cordova-plugin-camera": {
             "PACKAGE_NAME": "com.rabbiaumer.fyp.project"
         },
-        "cordova-plugin-media-capture": {
-            "PACKAGE_NAME": "com.rabbiaumer.fyp.project"
-        },
         "cordova-plugin-console": {
             "PACKAGE_NAME": "com.rabbiaumer.fyp.project"
         },
@@ -47,6 +44,9 @@
             "PACKAGE_NAME": "com.rabbiaumer.fyp.project"
         },
         "cordova-plugin-media": {
+            "PACKAGE_NAME": "com.rabbiaumer.fyp.project"
+        },
+        "cordova-plugin-media-capture": {
             "PACKAGE_NAME": "com.rabbiaumer.fyp.project"
         },
         "cordova-plugin-network-information": {
