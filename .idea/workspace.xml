@@ -1,11 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="53981265-1416-44e8-81c1-e89686e00d2a" name="Default" comment="">
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/platforms/android/assets/www/js/signup.js" afterPath="$PROJECT_DIR$/platforms/android/assets/www/js/signup.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/platforms/android/assets/www/signup-screen.html" afterPath="$PROJECT_DIR$/platforms/android/assets/www/signup-screen.html" />
-    </list>
+    <list default="true" id="53981265-1416-44e8-81c1-e89686e00d2a" name="Default" comment="" />
     <ignored path="QuizrApp.iws" />
     <ignored path=".idea/workspace.xml" />
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
