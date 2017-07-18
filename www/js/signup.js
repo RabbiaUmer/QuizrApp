@@ -12,7 +12,7 @@ $('#signup-form form').submit(function (event) {
 
   $.ajax({
     type: "POST",
-    url: 'https://programmingquizlearningapp-sqnmzjpjuz.now.sh/signup',
+    url: 'https://programming-quiz-learning-app.herokuapp.com/signup',
     data: {
       email: userEmail,
       password: userPassword

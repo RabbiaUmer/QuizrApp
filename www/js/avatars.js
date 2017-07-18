@@ -17,7 +17,7 @@ $(function () {
 
     var token = window.localStorage.getItem('user-token');
     $.ajax({
-      url: 'https://programmingquizlearningapp-sqnmzjpjuz.now.sh/chooseAvatar',
+      url: 'https://programming-quiz-learning-app.herokuapp.com/chooseAvatar',
       type: 'GET',
       headers: {
         'x-access-token': token

@@ -19,7 +19,7 @@ $(function () {
     var token = window.localStorage.getItem('user-token');
 
     $.ajax({
-      url: 'http://localhost:8000/categories',
+      url: 'https://programming-quiz-learning-app.herokuapp.com/categories',
       headers: {
         'x-access-token': token
       },
