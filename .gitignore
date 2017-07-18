@@ -1,6 +1,10 @@
 
 # Created by https://www.gitignore.io/api/macos,windows,webstorm
 
+### phonegap/cordova etc. ###
+platforms/android/.gradle
+platforms/android/CordovaLib
+
 ### macOS ###
 *.DS_Store
 .AppleDouble
