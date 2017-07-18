@@ -3,6 +3,7 @@
 
 ### phonegap/cordova etc. ###
 platforms/android/.gradle
+platforms/android/CordovaLib/build
 
 ### macOS ###
 *.DS_Store
