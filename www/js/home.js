@@ -3,6 +3,20 @@
  */
 
 $(function () {
+
+  // Fire off a request to fetch user information as soon as the page loads
+  var authToken = window.localStorage.getItem("user-token");
+  $.ajax({
+    type: "GET",
+    headers: {"x-access-token": authToken}, // have to send token on every request for authentication
+    url: 'https://programming-quiz-learning-app.herokuapp.com/user-profile',
+    success: function (res) {
+      $("#playerName").text(res.firstName + " " + res.lastName);
+    },
+    dataType: "json"
+  });
+
+
   $("#logout-btn").on("click", function (event) {
     event.preventDefault();
     window.localStorage.removeItem("user-token");
@@ -14,4 +28,6 @@ $(function () {
       showLoadMsg: true
     })
   });
+
+
 });
