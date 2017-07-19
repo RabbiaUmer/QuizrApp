@@ -12,6 +12,7 @@ $(function () {
     url: 'https://programming-quiz-learning-app.herokuapp.com/user-profile',
     success: function (res) {
       $("#playerName").text(res.firstName + " " + res.lastName);
+      $("#playerAvatar").attr("src", res.avatar);
     },
     dataType: "json"
   });
