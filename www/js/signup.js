@@ -55,11 +55,11 @@ function openHomeScreen() {
 
 function addSignupError(msg) {
   $("#signup-btn").prop("disabled", true);
-  $('#signup-form form')
-    .append('<p class="center signup-error bg-danger">' + msg + '</p>');
+  $('<p class="center signup-error bg-danger">' + msg + '</p>').hide().appendTo('#signup-form form').slideDown(500);
 }
 
 function removeSignupError() {
   $("#signup-btn").prop("disabled", false);
-  $('p.signup-error').remove();
-}
+  $('p.signup-error').slideUp(500, function () {
+    $('p.signup-error').remove();
+  }
