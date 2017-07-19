@@ -62,4 +62,5 @@ function removeSignupError() {
   $("#signup-btn").prop("disabled", false);
   $('p.signup-error').slideUp(500, function () {
     $('p.signup-error').remove();
-  }
+  })
+}
