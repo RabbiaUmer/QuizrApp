@@ -7,18 +7,19 @@ $('#signup-form form').submit(function (event) {
 
   var userEmail = $(this).find("#signup-email").val();
   var userPassword = $(this).find("#signup-password").val();
-  console.log(userEmail);
-  console.log(userPassword);
+  var fName = $(this).find("#firstName").val();
+  var lName = $(this).find("#lastName").val();
 
   $.ajax({
     type: "POST",
     url: 'https://programming-quiz-learning-app.herokuapp.com/signup',
     data: {
+      firstName: fName,
+      lastName: lName,
       email: userEmail,
       password: userPassword
     },
     success: function (res) {
-      console.log(res);
       if (res.success === true) {
         var localStorage = window.localStorage;
         localStorage.setItem("user-token", res.token);
