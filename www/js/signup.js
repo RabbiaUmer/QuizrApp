@@ -10,6 +10,8 @@ $('#signup-form form').submit(function (event) {
   var fName = $(this).find("#firstName").val();
   var lName = $(this).find("#lastName").val();
 
+  // TODO: Handling of errors and error messages on BE for login/signup
+
   $.ajax({
     type: "POST",
     url: 'https://programming-quiz-learning-app.herokuapp.com/signup',
@@ -29,6 +31,10 @@ $('#signup-form form').submit(function (event) {
         addSignupError(res.message);
       }
     },
+    error: function (res) {
+      addSignupError(res.responseJSON.message);
+
+    },
     dataType: "json"
   });
 
@@ -37,7 +43,7 @@ $('#signup-form form').submit(function (event) {
 
 
 // Removing errors on focus
-$('#signup-form form').find("#signup-email-email, #signup-password").focus(function () {
+$('#signup-form form').find("#signup-email, #signup-password, #firstName, #lastName").focus(function () {
   // if there is already error message added during previous attempt then remove that on focus
   removeSignupError();
 });
