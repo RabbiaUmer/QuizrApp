@@ -26,8 +26,14 @@ $(function () {
         console.log(err);
       },
       success: function (data) {
-        data.forEach(function (avatarUrl) {
-          $("#avatars .row").append("<img src='" + avatarUrl + "' class='col-xs-4 col-md-2 col-lg-2 img-responsive img-circle'/>");
+        data.forEach(function (avatarUrl, i) {
+          // $("#avatars .row").hide();
+          setTimeout(function () {
+            $("#avatars .row").append("<a id='avatar-" + i + "' href=''></a>");
+            $("a#avatar-" + i).hide()
+              .append("<img src='" + avatarUrl + "' class='col-xs-4 col-md-2 col-lg-2 img-responsive img-circle'/>").fadeIn();
+          }, 20 * i);
+
         });
         /* adding interval since jquery mobile allows to call hide/show loader events
          only on pageshow event or inside setInterval, refer to  http://stackoverflow.com/a/16277865/1609548*/
