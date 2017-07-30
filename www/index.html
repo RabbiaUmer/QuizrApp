@@ -45,7 +45,9 @@
   function onBackButton() {
     var pageName = $(":mobile-pagecontainer").pagecontainer("getActivePage").attr("id");
     var isTokenSet = window.localStorage.getItem("user-token");
-    if (pageName === "login-screen") {
+    if (pageName === "main-screen") {
+      navigator.app.exitApp();
+    } else if (pageName === "login-screen") {
       navigator.app.exitApp();
     } else if (pageName === "home-screen" && isTokenSet) {
       navigator.app.exitApp();
