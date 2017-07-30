@@ -57,6 +57,15 @@ $(function () {
             },
             success: function (data) {
 
+              // lets remove this page's navigation from history
+              // because we don't want the user to get back here when he presses the back button from home
+              // therefore always remove this page history before leaving this page
+
+              // index of array item to start removing history from (which is the last history item)
+              var index = $.mobile.navigate.history.stack.length - 2;
+              $.mobile.navigate.history.stack.splice(index, 1)
+              console.log($.mobile.navigate.history.stack);
+
               $(':mobile-pagecontainer').pagecontainer("change", "home.html", {
                 role: "page",
                 transition: "fade",
