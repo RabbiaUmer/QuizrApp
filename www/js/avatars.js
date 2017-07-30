@@ -28,7 +28,7 @@ $(function () {
       success: function (data) {
         data.forEach(function (avatarUrl, i) {
           $("#avatars .row")
-            .append("<img src='" + avatarUrl + "' class='col-xs-4 col-md-2 col-lg-2 img-responsive img-circle'/>").hide();
+            .append("<img src='" + avatarUrl + "' class='col-xs-4 col-md-2 col-lg-2 img-responsive img-circle avatar'/>").hide();
           $("#avatars .row").fadeIn(500);
         });
         /* adding interval since jquery mobile allows to call hide/show loader events
@@ -37,8 +37,30 @@ $(function () {
           $.mobile.loading('hide');
           clearInterval(showLoader);
         });
-      }
-    });
 
-  });
-});
+        // ajax request to set the avatar on the backend, which will set it in the database
+        $(".avatar").on("click", function () {
+          $.ajax({
+            url: 'https://programming-quiz-learning-app.herokuapp.com/set-avatar',
+            type: 'POST',
+            headers: {
+              'x-access-token': token
+            },
+            error: function (err) {
+              console.log(err);
+            },
+            success: function (data) {
+              console.log(data);
+            }
+
+          }); // end of set-avatar ajax
+
+        }); // end of onClick event
+
+      } // end of success
+
+    }); // end of chooseAvatar ajax
+
+  }); // end of pagecreate event
+
+}); // end of ready function
