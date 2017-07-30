@@ -29,17 +29,4 @@ $(function () {
       showLoadMsg: true
     })
   });
-
-  $("#playerAvatar").on("click", function (event) {
-    event.preventDefault();
-
-    $(':mobile-pagecontainer').pagecontainer("change", "avatars.html", {
-      role: "page",
-      transition: "fade",
-      changeHash: false,
-      reverse: true,
-      showLoadMsg: true
-    })
-  });
-
 });
