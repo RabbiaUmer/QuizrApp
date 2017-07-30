@@ -29,8 +29,8 @@ $(function () {
         data.forEach(function (avatarUrl, i) {
           // $("#avatars .row").hide();
           setTimeout(function () {
-            $("#avatars .row").append("<a id='avatar-" + i + "' href=''></a>");
-            $("a#avatar-" + i).hide()
+            $("#avatars .row").append("<span id='avatar-" + i + "'></span>");
+            $("span#avatar-" + i).hide()
               .append("<img src='" + avatarUrl + "' class='col-xs-4 col-md-2 col-lg-2 img-responsive img-circle'/>").fadeIn();
           }, 20 * i);
 
