@@ -32,8 +32,26 @@ $(function () {
       success: function (languages) {
 
         languages.forEach(function (language) {
-          $("#categories").append('<div class="row"><div class="col-xs-12"> <a href="compete.html" class="ui-btn ui-corner-all ui-shadow ui-btn-icon-right ui-icon-carat-r" data-transition="fade" data-id="' + language._id + '" data-name="' + language.name + '" class="btn btn-default btn-block">' + language.name.toUpperCase() + ' </a></div></div>');
+          $("#categories").append('<div class="row"><div class="col-xs-12"> <button class="category-btn ui-btn ui-corner-all ui-shadow ui-btn-icon-right ui-icon-carat-r" data-transition="fade" data-id="' + language._id + '" data-name="' + language.name + '" class="btn btn-default btn-block">' + language.name.toUpperCase() + ' </button></div></div>');
         });
+
+        // Once the buttons have been added, attach the click event on them
+        $('.category-btn').on('click', function (event) {
+          event.preventDefault();
+
+          $(':mobile-pagecontainer').pagecontainer("change", "compete.html", {
+            role: "page",
+            transition: "fade",
+            changeHash: true,
+            reverse: true,
+            showLoadMsg: true,
+            data: {
+              id: $(this).attr("data-id"),
+              name: $(this).attr("data-name")
+            }
+          })
+        });
+
         /* adding interval since jquery mobile allows to call hide/show loader events
          only on pageshow event or inside setInterval, refer to  http://stackoverflow.com/a/16277865/1609548*/
         var hideLoader = setInterval(function () {
