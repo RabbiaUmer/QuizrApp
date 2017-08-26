@@ -83,3 +83,17 @@ p::first-letter {
     width: 100%;
 
 }
+
+#progressBar {
+    visibility: hidden;
+    width: 100%;
+    background-color: inherit;
+}
+
+#progressBar #bar {
+    width: 0%;
+    height: 5px;
+    border-radius: 50px;
+    background-color: black;
+    transition: width 2s;
+}
