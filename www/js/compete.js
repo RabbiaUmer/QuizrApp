@@ -58,9 +58,11 @@ $(function () {
     }
 
     function showHideQuestionAnswers(data, index) {
-      // Displays the choice
+      // Displays the choices
       data[index].choices.forEach(function (value) {
-        $('#choices').append("<div class='col-xs-6'><button class='ui-btn ui-shadow ui-corner-all'>" + value + "</button></div>")
+        var choiceContainer = $("<div class='col-xs-6'></div>");
+        var choice = $("<button class='ui-btn ui-shadow ui-corner-all'></button>").text(value).appendTo(choiceContainer);
+        choiceContainer.appendTo('#choices');
       });
 
     }
