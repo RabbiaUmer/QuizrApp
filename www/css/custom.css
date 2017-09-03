@@ -97,3 +97,9 @@ p::first-letter {
     background-color: black;
     transition: width 2s;
 }
+
+.question {
+    font-size: 25px;
+    font-weight: bold;
+    text-align: center;
+}
