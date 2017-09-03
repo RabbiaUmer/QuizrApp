@@ -47,9 +47,10 @@ $(function () {
     });
 
     // Handle all the logic for displaying the questions and answers
-    function showQuestionsAndAnswers(data) {
+    var index = 0;
+
+    function showQuestionsAndAnswers(data, index) {
       var totalNumberOfQuestions = data.length;
-      var index = 0;
 
       // Displays the question
       $('#questions .question').text(data[index].question);
