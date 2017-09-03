@@ -2,24 +2,8 @@ $(function () {
 
   var token = window.localStorage.getItem('user-token');
 
-  // $.ajax({
-  //   url: 'https://programming-quiz-learning-app.herokuapp.com/',
-  //   headers: {
-  //     'x-access-token': token
-  //   },
-  //   type: 'GET',
-  //   error: function (err) {
-  //     console.log(err);
-  //   },
-  //   contentType: 'text/plain',
-  //   async: true,
-  //   success: function (data) {
-  //
-  //
-  //   }
-  // });
-
   $("#compete-screen").on("pageshow", function () {
+    $('#comp-loader').hide();
 
     // Retreiving data from URL parameters
     var params = $(this).data("url").split("?")[1];
@@ -29,13 +13,58 @@ $(function () {
     var name = individualParams[1].replace("name=", emptyString);
 
     // Showing the inital message and data
-    var competitionLoader = $("#competition").append("<div id='comp-loader'><div class='row'></div></div>");
-    competitionLoader.append("<div class='col-xs-12 text-center'> <h1 class='animated fadeInDown'>" + name + "</h1> <div><p>Here we go!</p></div> <div><br><p> You will be presented with multiple choice questions, correct answers would increase your reputation.</p></div> <br> <br> <p>Press the button to start</p> <br> <br><button id='comp-start-btn' class='ui-btn ui-shadow animated infinite pulse'>Start Game</button></div>");
+    var competitionLoader = $("#language-header")
+      .text(name).addClass('fadeInDown').show();
+    $('#comp-loader').show();
+
+    // Show the text below the language heading with fade in animation
+    $('#welcome-text').addClass('fadeIn').show();
 
     // On start game button, remove the loader element (because we're going to show the questions on the same page
     $('#comp-start-btn').on('click', function (event) {
       event.preventDefault();
-      competitionLoader.remove();
+      $('#comp-loader').remove();
+
+      $.ajax({
+        url: 'https://programming-quiz-learning-app.herokuapp.com/questions',
+        headers: {
+          'x-access-token': token
+        },
+        data: {
+          categoryId: id
+        },
+        type: 'GET',
+        error: function (err) {
+          console.log(err);
+        },
+        contentType: 'text/plain',
+        async: true,
+        success: function (data) {
+          console.log(data);
+          showQuestionsAndAnswers(data);
+        }
+      });
     });
+
+    // Handle all the logic for displaying the questions and answers
+    function showQuestionsAndAnswers(data) {
+      var totalNumberOfQuestions = data.length;
+      var index = 0;
+
+      // Displays the question
+      $('#questions .question').text(data[index].question);
+      index = showHideQuestionAnswers(data, index);
+
+    }
+
+    function showHideQuestionAnswers(data, index) {
+      // Displays the choice
+      data[index].choices.forEach(function (value) {
+        $('#choices').append("<div class='col-xs-6'><button class='ui-btn ui-shadow ui-corner-all'>" + value + "</button></div>")
+      });
+
+    }
+
+
   });
 });
