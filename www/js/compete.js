@@ -41,14 +41,13 @@ $(function () {
         async: true,
         success: function (data) {
           console.log(data);
-          showQuestionsAndAnswers(data);
+          var index = 0;
+          showQuestionsAndAnswers(data, index);
         }
       });
     });
 
     // Handle all the logic for displaying the questions and answers
-    var index = 0;
-
     function showQuestionsAndAnswers(data, index) {
       var totalNumberOfQuestions = data.length;
 
