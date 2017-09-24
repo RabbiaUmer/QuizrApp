@@ -43,6 +43,15 @@ $(function () {
           console.log(data);
           var index = 0;
           showQuestionsAndAnswers(data, index);
+          // once the question and choices has been shown the first time, add the event on button click
+          $('.choice-btn').on('click', function () {
+            var selectedChoice = $(this).attr('data-choice');
+            if (selectedChoice === data[index].answer) {
+              $('#choices-wrapper').remove();
+              index++;
+              showHideQuestionAnswers(data, index);
+            }
+          });
         }
       });
     });
@@ -53,18 +62,18 @@ $(function () {
 
       // Displays the question
       $('#questions .question').text(data[index].question);
-      index = showHideQuestionAnswers(data, index);
-
+      showHideQuestionAnswers(data, index);
     }
 
     function showHideQuestionAnswers(data, index) {
       // Displays the choices
+      var choicesWrapper = $("<div id='choices-wrapper'></div>");
+      choicesWrapper.appendTo('#choices');
       data[index].choices.forEach(function (value) {
         var choiceContainer = $("<div class='col-xs-6'></div>");
-        var choice = $("<button class='ui-btn ui-shadow ui-corner-all'></button>").text(value).appendTo(choiceContainer);
-        choiceContainer.appendTo('#choices');
+        var choice = $("<button class='ui-btn ui-corner-all choice-btn' data-choice='" + value + "' ></button>").text(value).appendTo(choiceContainer);
+        choiceContainer.appendTo(choicesWrapper);
       });
-
     }
 
 
