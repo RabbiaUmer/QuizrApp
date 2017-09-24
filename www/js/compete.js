@@ -41,23 +41,8 @@ $(function () {
         async: true,
         success: function (data) {
 
-          var index = 0;
+          showQuestionsAndAnswers(data, 0);
 
-          showQuestionsAndAnswers(data, index);
-
-          // once the question and choices has been shown the first time, add the event on button click
-          $('.choice-btn').on('click', function () {
-
-            var selectedChoice = $(this).attr('data-choice');
-
-            // if the selected choice is the answer
-            if (selectedChoice === data[index].answer) {
-
-              // remove the current choices & question
-              index++;
-              showQuestionsAndAnswers(data, index);
-            }
-          });
         }
       });
     });
@@ -72,11 +57,23 @@ $(function () {
 
     // Handle all the logic for displaying the questions and answers
     function showQuestionsAndAnswers(data, index) {
-      var totalNumberOfQuestions = data.length;
 
       // Displays the question
       toggleQuestion(data[index].question);
       showHideQuestionAnswers(data, index);
+
+      // once the question and choices has been shown the first time, add the event on button click
+      $('.choice-btn').on('click', function () {
+        var selectedChoice = $(this).attr('data-choice');
+
+        // if the selected choice is the answer
+        if (selectedChoice === data[index].answer) {
+          // remove the current choices & question
+          index++;
+          showQuestionsAndAnswers(data, index);
+        }
+      });
+
     }
 
     function showHideQuestionAnswers(data, index) {
