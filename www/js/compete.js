@@ -41,7 +41,7 @@ $(function () {
         async: true,
         success: function (data) {
 
-          showQuestionsAndAnswers(data, 0);
+          showQuestionsAndAnswers(data, 0, []);
 
         }
       });
@@ -56,27 +56,39 @@ $(function () {
     }
 
     // Handle all the logic for displaying the questions and answers
-    function showQuestionsAndAnswers(data, index) {
+    function showQuestionsAndAnswers(data, index, results) {
 
-      // Displays the question
-      toggleQuestion(data[index].question);
-      showHideQuestionAnswers(data, index);
+      if (index !== data.length) {
 
-      // once the question and choices has been shown the first time, add the event on button click
-      // using one instead of one, so that if user keeps on clicking the same button, it wouldn't fire the callback each time
-      $('.choice-btn').one('click', function () {
-        var selectedChoice = $(this).attr('data-choice');
+        // Displays the question
+        toggleQuestion(data[index].question);
+        showHideQuestionAnswers(data, index);
 
-        // if the selected choice is the answer
-        if (selectedChoice === data[index].answer) {
-          selectAnswer('correct-answer', data, index, this);
-        } else { // if the selectedChoice is not the answer
-          selectAnswer('wrong-answer', data, index, this);
-        }
-      });
+        // once the question and choices has been shown the first time, add the event on button click
+        // using one instead of one, so that if user keeps on clicking the same button, it wouldn't fire the callback each time
+        $('.choice-btn').one('click', function () {
+          var selectedChoice = $(this).attr('data-choice');
+
+          // if the selected choice is the answer
+          if (selectedChoice === data[index].answer) {
+            results.push({correct: true, answer: selectedChoice});
+            selectAnswer('correct-answer', data, index, this, results);
+
+          } else { // if the selectedChoice is not the answer
+            results.push({correct: false, answer: selectedChoice});
+            selectAnswer('wrong-answer', data, index, this, results);
+          }
+        });
+      } else {
+        submitResults(results);
+      }
     }
 
-    function selectAnswer(selectionClass, data, index, button) {
+    function submitResults(res) {
+      console.log(res);
+    }
+
+    function selectAnswer(selectionClass, data, index, button, results) {
       $(button).addClass(selectionClass);
 
       // once the user has selected the choice, disable all of the buttons
@@ -88,7 +100,7 @@ $(function () {
       setTimeout(function () {
         // remove the current choices & question
         index++;
-        showQuestionsAndAnswers(data, index);
+        showQuestionsAndAnswers(data, index, results);
       }, 1000);
     }
 
