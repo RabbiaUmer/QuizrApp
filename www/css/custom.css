@@ -107,3 +107,17 @@ p::first-letter {
 #welcome-text {
     display: none;
 }
+
+.correct-answer {
+    box-shadow: 0 1px 3px #4cae4c !important;
+    background-color: #4cae4c !important;
+    border-color: #4cae4c !important;
+    color: #fff !important;
+}
+
+.wrong-answer {
+    box-shadow: 0 1px 3px #FF4632 !important;
+    background-color: #FF4632 !important;
+    border-color: #FF4632 !important;
+    color: #fff !important;
+}
