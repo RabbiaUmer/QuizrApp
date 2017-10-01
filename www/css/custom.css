@@ -126,3 +126,7 @@ p::first-letter {
     white-space: normal;
     height: 100px;
 }
+
+#questions {
+    min-height: 160px;
+}
