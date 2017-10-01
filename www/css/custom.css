@@ -121,3 +121,8 @@ p::first-letter {
     border-color: #FF4632 !important;
     color: #fff !important;
 }
+
+.choice-btn {
+    white-space: normal;
+    height: 100px;
+}
