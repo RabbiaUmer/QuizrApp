@@ -100,7 +100,7 @@ $(function () {
       var choicesWrapper = $("<div id='choices-wrapper'></div>");
 
       data[index].choices.forEach(function (value) {
-        var choiceContainer = $("<div class='col-xs-6'></div>");
+        var choiceContainer = $("<div class='col-xs-12'></div>");
         var choice = $("<button class='ui-btn ui-corner-all ui-shadow choice-btn' data-choice='" + value + "' ></button>").text(value).appendTo(choiceContainer);
         choiceContainer.appendTo(choicesWrapper);
 
