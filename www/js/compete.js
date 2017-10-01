@@ -68,9 +68,23 @@ $(function () {
 
         // if the selected choice is the answer
         if (selectedChoice === data[index].answer) {
-          // remove the current choices & question
-          index++;
-          showQuestionsAndAnswers(data, index);
+          $(this).addClass('correct-answer');
+
+          // adding some fake delay before we move to presenting the next question and choices
+          setTimeout(function () {
+            // remove the current choices & question
+            index++;
+            showQuestionsAndAnswers(data, index);
+          }, 500);
+        } else { // if the selectedChoice is not the answer
+          $(this).addClass('wrong-answer');
+
+          // adding some fake delay before we move to presenting the next question and choices
+          setTimeout(function () {
+            // remove the current choices & question
+            index++;
+            showQuestionsAndAnswers(data, index);
+          }, 1000);
         }
       });
 
@@ -87,7 +101,7 @@ $(function () {
 
       data[index].choices.forEach(function (value) {
         var choiceContainer = $("<div class='col-xs-6'></div>");
-        var choice = $("<button class='ui-btn ui-corner-all choice-btn' data-choice='" + value + "' ></button>").text(value).appendTo(choiceContainer);
+        var choice = $("<button class='ui-btn ui-corner-all ui-shadow choice-btn' data-choice='" + value + "' ></button>").text(value).appendTo(choiceContainer);
         choiceContainer.appendTo(choicesWrapper);
       });
     }
