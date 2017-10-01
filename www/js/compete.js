@@ -93,16 +93,19 @@ $(function () {
     function showHideQuestionAnswers(data, index) {
 
       // first remove any existing choices before rendering the new ones
-      $('#choices-wrapper').remove();
+      $('#choices-wrapper').fadeOut(function () {
+        $(this).remove();
+      });
 
-      // Displays the choices
       var choicesWrapper = $("<div id='choices-wrapper'></div>");
-      choicesWrapper.appendTo('#choices');
 
       data[index].choices.forEach(function (value) {
         var choiceContainer = $("<div class='col-xs-6'></div>");
         var choice = $("<button class='ui-btn ui-corner-all ui-shadow choice-btn' data-choice='" + value + "' ></button>").text(value).appendTo(choiceContainer);
         choiceContainer.appendTo(choicesWrapper);
+
+        // Displays the choices
+        choicesWrapper.hide().appendTo('#choices').fadeIn();
       });
     }
 
