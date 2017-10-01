@@ -68,26 +68,22 @@ $(function () {
 
         // if the selected choice is the answer
         if (selectedChoice === data[index].answer) {
-          $(this).addClass('correct-answer');
-
-          // adding some fake delay before we move to presenting the next question and choices
-          setTimeout(function () {
-            // remove the current choices & question
-            index++;
-            showQuestionsAndAnswers(data, index);
-          }, 500);
+          selectAnswer('correct-answer', data, index, this);
         } else { // if the selectedChoice is not the answer
-          $(this).addClass('wrong-answer');
-
-          // adding some fake delay before we move to presenting the next question and choices
-          setTimeout(function () {
-            // remove the current choices & question
-            index++;
-            showQuestionsAndAnswers(data, index);
-          }, 1000);
+          selectAnswer('wrong-answer', data, index, this);
         }
       });
+    }
 
+    function selectAnswer(selectionClass, data, index, button) {
+      $(button).addClass(selectionClass);
+
+      // adding some fake delay before we move to presenting the next question and choices
+      setTimeout(function () {
+        // remove the current choices & question
+        index++;
+        showQuestionsAndAnswers(data, index);
+      }, 1000);
     }
 
     function showHideQuestionAnswers(data, index) {
