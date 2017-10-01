@@ -52,7 +52,7 @@ $(function () {
       /* check if the argument passed is a string or there is not an argument
        or empty argument add string if provided, otherwise add empty string */
       var question = questionString ? questionString : '';
-      $('#questions .question').text(question);
+      $('#questions .question').hide().text(question).fadeIn();
     }
 
     // Handle all the logic for displaying the questions and answers
