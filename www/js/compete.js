@@ -63,7 +63,8 @@ $(function () {
       showHideQuestionAnswers(data, index);
 
       // once the question and choices has been shown the first time, add the event on button click
-      $('.choice-btn').on('click', function () {
+      // using one instead of one, so that if user keeps on clicking the same button, it wouldn't fire the callback each time
+      $('.choice-btn').one('click', function () {
         var selectedChoice = $(this).attr('data-choice');
 
         // if the selected choice is the answer
@@ -77,6 +78,11 @@ $(function () {
 
     function selectAnswer(selectionClass, data, index, button) {
       $(button).addClass(selectionClass);
+
+      // once the user has selected the choice, disable all of the buttons
+      $('.choice-btn').prop('disabled', true);
+      // but we're enabling the button that the user clicked on
+      $(button).prop('disabled', false);
 
       // adding some fake delay before we move to presenting the next question and choices
       setTimeout(function () {
