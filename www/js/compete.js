@@ -41,6 +41,7 @@ $(function () {
         async: true,
         success: function (data) {
 
+          toggleProgressBar();
           showQuestionsAndAnswers(data, 0, []);
 
         }
@@ -96,11 +97,25 @@ $(function () {
       });
       removeQuestionAnswers();
       toggleQuestion();
+      toggleProgressBar();
       var percentageOfCorrectAnswers = (numberOfCorrectAnswers * 100 ) / data.length;
       console.log(percentageOfCorrectAnswers);
     }
 
+    function progressBar(data, index) {
+      index = index + 1; // because we're dealing with the question number not the actual index in an array
+      var barWidth = (index * 100) / data.length;
+      $('#progressBar #bar').css('width', barWidth + '%');
+    }
+
+    function toggleProgressBar() {
+      var visibilityValue = $('#progressBar').css('visibility');
+      visibilityValue = visibilityValue === 'visible' ? 'hidden' : 'visible';
+      $('#progressBar').css('visibility', visibilityValue);
+    }
+
     function selectAnswer(selectionClass, data, index, selectedButton, results, correctBtn) {
+      progressBar(data, index);
       $(selectedButton).addClass(selectionClass);
 
       // once the user has selected the choice, disable all of the buttons
