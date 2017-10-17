@@ -87,14 +87,16 @@ p::first-letter {
 #progressBar {
     visibility: hidden;
     width: 100%;
-    background-color: inherit;
+    margin-bottom: 5px;
+    border-radius: 50px;
+    background-color: #eeeeee;
 }
 
 #progressBar #bar {
     width: 0%;
     height: 5px;
     border-radius: 50px;
-    background-color: black;
+    background-color: #2A8BA4;
     transition: width 2s;
 }
 
