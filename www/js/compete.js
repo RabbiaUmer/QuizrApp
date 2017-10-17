@@ -82,12 +82,22 @@ $(function () {
           }
         });
       } else {
-        submitResults(results);
+        submitResults(results, data);
       }
     }
 
-    function submitResults(res) {
+    function submitResults(res, data) {
       console.log(res);
+      var numberOfCorrectAnswers = 0;
+      res.forEach(function (data, index) {
+        if (data.correct) {
+          numberOfCorrectAnswers++;
+        }
+      });
+      removeQuestionAnswers();
+      toggleQuestion();
+      var percentageOfCorrectAnswers = (numberOfCorrectAnswers * 100 ) / data.length;
+      console.log(percentageOfCorrectAnswers);
     }
 
     function selectAnswer(selectionClass, data, index, selectedButton, results, correctBtn) {
@@ -113,12 +123,16 @@ $(function () {
       }, 1000);
     }
 
-    function showHideQuestionAnswers(data, index) {
-
+    function removeQuestionAnswers() {
       // first remove any existing choices before rendering the new ones
       $('#choices-wrapper').fadeOut(function () {
         $(this).remove();
       });
+    }
+
+    function showHideQuestionAnswers(data, index) {
+
+      removeQuestionAnswers();
 
       var choicesWrapper = $("<div id='choices-wrapper'></div>");
 
