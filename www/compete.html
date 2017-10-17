@@ -1,46 +1,54 @@
 <!-- Start of compete page -->
 <div id="compete-screen" data-role="page">
   
-  <div id="competition" data-role="content">
-    <div class="row">
-      <div class="col-xs-12">
-        <div id="progressBar">
-          <div id="bar"></div>
+  <div data-role="content">
+    
+    <div id="competition">
+      <!--Row for displaying the progressbar -->
+      <div class="row">
+        <div class="col-xs-12">
+          <div id="progressBar">
+            <div id="bar"></div>
+          </div>
         </div>
       </div>
-    </div>
-    <div id="comp-loader">
-      <div class="row">
-        <div class="col-xs-12 text-center">
-          <h1 class="animated" id="language-header"></h1>
-          <div id="welcome-text" class="animated">
-            <div><p>Here we go!</p></div>
-            <div><br>
-              <p> You will be presented with multiple choice questions, correct answers would increase your
-                reputation.</p></div>
-            <br> <br>
-            <p>Press the button to start</p> <br> <br>
-            <button id="comp-start-btn" class="ui-btn ui-shadow animated infinite pulse">Start Game</button>
+      
+      <!-- Row for displaying the loading screen initally where you click for the start game button-->
+      <div id="comp-loader">
+        <div class="row">
+          <div class="col-xs-12 text-center">
+            <h1 class="animated" id="language-header"></h1>
+            <div id="welcome-text" class="animated">
+              <div><p>Here we go!</p></div>
+              <div><br>
+                <p> You will be presented with multiple choice questions, correct answers would increase your
+                  reputation.</p></div>
+              <br> <br>
+              <p>Press the button to start</p> <br> <br>
+              <button id="comp-start-btn" class="ui-btn ui-shadow animated infinite pulse">Start Game</button>
+            </div>
+          </div>
+        </div>
+      </div>
+      
+      <!-- This is where the questions and answers will go-->
+      <div id="material">
+        <div class="row">
+          <div class='col-xs-12' id="questions">
+            <p class='question'>
+              <!-- Question will be added here dynamically from jQuery-->
+            </p>
+          </div>
+        </div>
+        <br><br>
+        <div class="row">
+          <div class="col-xs-12" id="choices">
+            <!-- Choices will be added here dynamically from jQuery-->
           </div>
         </div>
       </div>
     </div>
-    <!-- This is where the questions and answers will go-->
-    <div id="material">
-      <div class="row">
-        <div class='col-xs-12' id="questions">
-          <p class='question'>
-            <!-- Question will be added here dynamically from jQuery-->
-          </p>
-        </div>
-      </div>
-      <br><br>
-      <div class="row">
-        <div class="col-xs-12" id="choices">
-          <!-- Choices will be added here dynamically from jQuery-->
-        </div>
-      </div>
-    </div>
+  
   </div>
   
   <script src="js/compete.js"></script>
