@@ -68,15 +68,17 @@ $(function () {
         // using one instead of one, so that if user keeps on clicking the same button, it wouldn't fire the callback each time
         $('.choice-btn').one('click', function () {
           var selectedChoice = $(this).attr('data-choice');
+          var correctAnswer = data[index].answer;
 
           // if the selected choice is the answer
-          if (selectedChoice === data[index].answer) {
+          if (selectedChoice === correctAnswer) {
             results.push({correct: true, answer: selectedChoice});
             selectAnswer('correct-answer', data, index, this, results);
 
           } else { // if the selectedChoice is not the answer
             results.push({correct: false, answer: selectedChoice});
-            selectAnswer('wrong-answer', data, index, this, results);
+            var correctBtn = $('.choice-btn[data-choice=\"' + correctAnswer + '\"]')
+            selectAnswer('wrong-answer', data, index, this, results, correctBtn);
           }
         });
       } else {
@@ -88,13 +90,20 @@ $(function () {
       console.log(res);
     }
 
-    function selectAnswer(selectionClass, data, index, button, results) {
-      $(button).addClass(selectionClass);
+    function selectAnswer(selectionClass, data, index, selectedButton, results, correctBtn) {
+      $(selectedButton).addClass(selectionClass);
 
       // once the user has selected the choice, disable all of the buttons
       $('.choice-btn').prop('disabled', true);
       // but we're enabling the button that the user clicked on
-      $(button).prop('disabled', false);
+      $(selectedButton).prop('disabled', false);
+
+      // if the answer was wrong, hightlight/show user the correct answer
+      if (correctBtn) {
+        setTimeout(function () {
+          $(correctBtn).addClass('correct-answer');
+        }, 500);
+      }
 
       // adding some fake delay before we move to presenting the next question and choices
       setTimeout(function () {
