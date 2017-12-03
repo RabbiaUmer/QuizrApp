@@ -64,7 +64,7 @@ cordova.define("cordova-plugin-file.Preparing", function(require, exports, modul
         if (url.trim().substr(0,7) === "cdvfile") {
             /* Quirk:
             Plugin supports cdvfile://localhost (local resources) only.
-            I.e. external resources are not supported via cdvfile. */
+            I.e. vendor resources are not supported via cdvfile. */
             if (url.indexOf("cdvfile://localhost") !== -1) {
                 // Browser supports temporary and persistent only
                 var indexPersistent = url.indexOf('persistent');
