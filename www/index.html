@@ -73,9 +73,8 @@
       authenticateUser("login.html");
     } else {
 
-      $.ajax('https://programming-quiz-learning-app.herokuapp.com/user-profile', {headers: {"x-access-token": authToken}})
+      $.ajax('https://programming-quiz-learning-app.herokuapp.com/authenticate', {headers: {"x-access-token": authToken}})
         .done(function (data) {
-
           if (data.success) { // if token is not expired
 
             // then show home screen
