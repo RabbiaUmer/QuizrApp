@@ -62,28 +62,41 @@
 
   // device APIs are available
   function onDeviceReady() {
-
+    // start showing splash screen
     navigator.splashscreen.show();
 
-    if (window.localStorage.getItem("user-token")) {
-      setTimeout(function () {
-        navigator.splashscreen.hide();
-      }, 3000);
+    // validate the token with backend (expired or not)
+    var authToken = localStorage.getItem('user-token');
+    if (!authToken) { // if the token doesn't even exist
 
-      $(':mobile-pagecontainer').pagecontainer("change", "home.html", {
-        role: "page",
-        transition: "fade",
-        changeHash: true,
-        reverse: true,
-        showLoadMsg: true
-      })
+      // then show login screen before even sending request to validate the token
+      authenticateUser("login.html");
     } else {
 
+      $.ajax('https://programming-quiz-learning-app.herokuapp.com/user-profile', {headers: {"x-access-token": authToken}})
+        .done(function (data) {
+
+          if (data.success) { // if token is not expired
+
+            // then show home screen
+            authenticateUser("home.html");
+
+          } else { // if expired
+
+            // then show login screen
+            authenticateUser("login.html");
+
+          }
+        });
+    }
+
+    function authenticateUser(pageName) {
+      // hide splash screen before showing any other screen (login or home screen)
       setTimeout(function () {
         navigator.splashscreen.hide();
       }, 3000);
 
-      $(':mobile-pagecontainer').pagecontainer("change", "login.html", {
+      $(':mobile-pagecontainer').pagecontainer("change", pageName, {
         role: "page",
         transition: "fade",
         changeHash: true,
