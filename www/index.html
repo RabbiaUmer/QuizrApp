@@ -29,6 +29,7 @@
   <script type="text/javascript" src="js/jquery-2.2.4.min.js"></script>
   <script type="text/javascript" src="js/jquery.mobile-1.4.5.min.js"></script>
   <script type="text/javascript" src="js/bootstrap/bootstrap.min.js"></script>
+  <script type="text/javascript" src="js/socket.io.js"></script>
   
   <title>Quizr</title>
 </head>
@@ -37,73 +38,22 @@
 <div id="main-screen" class="" data-role="page">
 </div>
 <script type="text/javascript" charset="utf-8" src="cordova.js"></script>
+
+<!--Following scripts have to be in a the order they're included, otherwise it will break the project-->
+<script src="js/main.js"></script>
 <script>
-  // Wait for device API libraries to load
+
+  // var socket = io.connect('localhost:8000/', {
+  //   query: 'token=' + authToken
+  // });
   //
-  document.addEventListener("deviceready", onDeviceReady, false);
-  document.addEventListener("backbutton", onBackButton, false);
-
-  // Handle the logic for the back-button for entire app here, since the event is attached to the document
-  function onBackButton() {
-    var pageName = $(":mobile-pagecontainer").pagecontainer("getActivePage").attr("id");
-    var isTokenSet = window.localStorage.getItem("user-token");
-    if (pageName === "main-screen") {
-      navigator.app.exitApp();
-    } else if (pageName === "login-screen") {
-      navigator.app.exitApp();
-    } else if (pageName === "home-screen" && isTokenSet) {
-      navigator.app.exitApp();
-    }
-    else {
-      navigator.app.backHistory();
-    }
-
-  }
-
-  // device APIs are available
-  function onDeviceReady() {
-    // start showing splash screen
-    navigator.splashscreen.show();
-
-    // validate the token with backend (expired or not)
-    var authToken = localStorage.getItem('user-token');
-    if (!authToken) { // if the token doesn't even exist
-
-      // then show login screen before even sending request to validate the token
-      authenticateUser("login.html");
-    } else {
-
-      $.ajax('https://programming-quiz-learning-app.herokuapp.com/authenticate', {headers: {"x-access-token": authToken}})
-        .done(function (data) {
-          if (data.success) { // if token is not expired
-
-            // then show home screen
-            authenticateUser("home.html");
-
-          } else { // if expired
-
-            // then show login screen
-            authenticateUser("login.html");
-
-          }
-        });
-    }
-
-    function authenticateUser(pageName) {
-      // hide splash screen before showing any other screen (login or home screen)
-      setTimeout(function () {
-        navigator.splashscreen.hide();
-      }, 3000);
-
-      $(':mobile-pagecontainer').pagecontainer("change", pageName, {
-        role: "page",
-        transition: "fade",
-        changeHash: true,
-        reverse: true,
-        showLoadMsg: true
-      })
-    }
-  }
+  // console.log(socket);
+  //
+  // socket.on('connect', function () {
+  //   console.log('authenticated');
+  // }).on('disconnect', function () {
+  //   console.log('disconnected');
+  // });
 </script>
 </body>
 </html>
