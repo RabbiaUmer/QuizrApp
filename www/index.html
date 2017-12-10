@@ -38,10 +38,12 @@
 <div id="main-screen" class="" data-role="page">
 </div>
 <script type="text/javascript" charset="utf-8" src="cordova.js"></script>
-
-<!--Following scripts have to be in a the order they're included, otherwise it will break the project-->
-<script src="js/main.js"></script>
 <script>
+  // global configurations
+  var serverUrl = {
+    hosted: 'https://programming-quiz-learning-app.herokuapp.com', // wherever you're hosting your back-end
+    local: 'https://192.168.0.11:8000' // whatever your local IP or localhost is
+  }
 
   // var socket = io.connect('localhost:8000/', {
   //   query: 'token=' + authToken
@@ -55,5 +57,7 @@
   //   console.log('disconnected');
   // });
 </script>
+<!--Following scripts have to be in a the order they're included, otherwise it will break the project-->
+<script src="js/main.js"></script>
 </body>
 </html>
