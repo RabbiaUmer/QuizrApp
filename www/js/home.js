@@ -9,7 +9,7 @@ $(function () {
   $.ajax({
     type: "GET",
     headers: {"x-access-token": authToken}, // have to send token on every request for authentication
-    url: 'https://'+serverUrl.localhost+'/user-profile',
+    url: serverUrl.hosted+'/user-profile',
     success: function (res) {
       $(".header").text(res.firstName + " " + res.lastName);
       $("#playerAvatar").attr("src", res.avatar);

@@ -35,7 +35,7 @@ function onDeviceReady() {
     authenticateUser("login.html");
   } else {
 
-    $.ajax('https://'+serverUrl.localhost+'/authenticate', {headers: {"x-access-token": authToken}})
+    $.ajax(serverUrl.hosted+'/authenticate', {headers: {"x-access-token": authToken}})
       .done(function (data) {
         if (data.success) { // if token is not expired
 
