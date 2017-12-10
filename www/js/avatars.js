@@ -17,7 +17,7 @@ $(function () {
 
     var token = window.localStorage.getItem('user-token');
     $.ajax({
-      url: 'https://programming-quiz-learning-app.herokuapp.com/chooseAvatar',
+      url: 'https://'+serverUrl.localhost+'/chooseAvatar',
       type: 'GET',
       headers: {
         'x-access-token': token
@@ -41,7 +41,7 @@ $(function () {
         // ajax request to set the avatar on the backend, which will set it in the database
         $(".avatar").on("click", function () {
           $.ajax({
-            url: 'https://programming-quiz-learning-app.herokuapp.com/set-avatar',
+            url: 'https://'+serverUrl.localhost+'/set-avatar',
             data: {
               avatarName: $(this).attr("data-name"),
             },

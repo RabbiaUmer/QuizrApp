@@ -14,7 +14,7 @@ $('#signup-form form').submit(function (event) {
 
   $.ajax({
     type: "POST",
-    url: 'https://programming-quiz-learning-app.herokuapp.com/signup',
+    url: 'https://'+serverUrl.localhost+'/signup',
     data: {
       firstName: fName,
       lastName: lName,

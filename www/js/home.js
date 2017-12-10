@@ -9,7 +9,7 @@ $(function () {
   $.ajax({
     type: "GET",
     headers: {"x-access-token": authToken}, // have to send token on every request for authentication
-    url: 'https://programming-quiz-learning-app.herokuapp.com/user-profile',
+    url: 'https://'+serverUrl.localhost+'/user-profile',
     success: function (res) {
       $(".header").text(res.firstName + " " + res.lastName);
       $("#playerAvatar").attr("src", res.avatar);

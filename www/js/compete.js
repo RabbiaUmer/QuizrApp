@@ -26,7 +26,7 @@ $(function () {
       $('#comp-loader').remove();
 
       $.ajax({
-        url: 'https://programming-quiz-learning-app.herokuapp.com/questions',
+        url: 'https://'+serverUrl.localhost+'/questions',
         headers: {
           'x-access-token': token
         },

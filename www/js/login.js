@@ -10,7 +10,7 @@ $('#login-form form').submit(function (event) {
 
   $.ajax({
     type: "POST",
-    url: 'https://programming-quiz-learning-app.herokuapp.com/login',
+    url: 'https://'+serverUrl.localhost+'/login',
     // contentType: 'application/x-www-form-urlencoded; charset=UTF-8',
     data: {
       email: userEmail,
