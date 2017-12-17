@@ -11,6 +11,7 @@ $(function () {
     var individualParams = params.split("&");
     var id = individualParams[0].replace("id=", emptyString);
     var name = individualParams[1].replace("name=", emptyString);
+    var challengeType = individualParams[2].replace("challengeType=", emptyString);
 
     // Showing the inital message and data
     var competitionLoader = $("#language-header")
@@ -26,7 +27,7 @@ $(function () {
       $('#comp-loader').remove();
 
       $.ajax({
-        url: serverUrl.hosted+'/questions',
+        url: serverUrl.hosted + '/questions',
         headers: {
           'x-access-token': token
         },
@@ -101,7 +102,7 @@ $(function () {
         removeQuestionAnswers();
         toggleQuestion();
         toggleProgressBar();
-        var percentageOfCorrectAnswers = (numberOfCorrectAnswers * 100 ) / data.length;
+        var percentageOfCorrectAnswers = (numberOfCorrectAnswers * 100) / data.length;
       }, 2000)
     }
 
