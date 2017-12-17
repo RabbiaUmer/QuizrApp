@@ -6,7 +6,9 @@ $(function () {
 
   // use one instead of on, so that we don't have multiple pagecreate events attached to the same documents,
   // reference here http://stackoverflow.com/a/22585583/1609548 , https://api.jquery.com/one/
-  $(document).one("pageshow", function (event) {
+  $('#categories-selection').on("pageshow", function (event) {
+
+    var challengeType = $(this).data("url").split("?")[1].split('=')[1];
 
     /* adding interval since jquery mobile allows to call hide/show loader events
      only on pageshow event or inside setInterval, refer to  http://stackoverflow.com/a/16277865/1609548*/
@@ -19,7 +21,7 @@ $(function () {
     var token = window.localStorage.getItem('user-token');
 
     $.ajax({
-      url: serverUrl.hosted+'/categories',
+      url: serverUrl.hosted + '/categories',
       headers: {
         'x-access-token': token
       },
@@ -47,7 +49,8 @@ $(function () {
             showLoadMsg: true,
             data: {
               id: $(this).attr("data-id"),
-              name: $(this).attr("data-name")
+              name: $(this).attr("data-name"),
+              challengeType: challengeType
             }
           })
         });
