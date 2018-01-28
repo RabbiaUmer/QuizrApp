@@ -6,11 +6,11 @@ $(function () {
     $('#comp-loader').hide();
 
     // Retreiving data from URL parameters
-    var params = $(this).data("url").split("?")[1];
-    var emptyString = "";
-    var individualParams = params.split("&");
-    var id = individualParams[0].replace("id=", emptyString);
-    var name = individualParams[1].replace("name=", emptyString);
+    var params = $(this).data("url").split("?")[1]; // retrieveing url parameters
+    var emptyString = ""; // will be used to clear up the string
+    var individualParams = params.split("&"); // splitting based on `&` character
+    var id = individualParams[0].replace("id=", emptyString); // getting id param value
+    var name = individualParams[1].replace("name=", emptyString); // getting name param value
     var challengeType = individualParams[2].replace("challengeType=", emptyString);
 
     // Showing the inital message and data
