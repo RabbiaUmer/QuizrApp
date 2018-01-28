@@ -103,19 +103,8 @@ $(function () {
         toggleQuestion();
         toggleProgressBar();
         var percentageOfCorrectAnswers = (numberOfCorrectAnswers * 100) / data.length;
+        console.log(percentageOfCorrectAnswers);
       }, 2000)
-    }
-
-    function progressBar(data, index) {
-      index = index + 1; // because we're dealing with the question number not the actual index in an array
-      var barWidth = (index * 100) / data.length;
-      $('#progressBar #bar').css('width', barWidth + '%');
-    }
-
-    function toggleProgressBar() {
-      var visibilityValue = $('#progressBar').css('visibility');
-      visibilityValue = visibilityValue === 'visible' ? 'hidden' : 'visible';
-      $('#progressBar').css('visibility', visibilityValue);
     }
 
     function selectAnswer(selectionClass, data, index, selectedButton, results, correctBtn) {
@@ -165,6 +154,18 @@ $(function () {
       });
     }
 
+    // -------------- PROGRESS BAR RELATED ANSWERS --------------------
+    function progressBar(data, index) {
+      index = index + 1; // because we're dealing with the question number not the actual index in an array
+      var barWidth = (index * 100) / data.length;
+      $('#progressBar #bar').css('width', barWidth + '%');
+    }
+
+    function toggleProgressBar() {
+      var visibilityValue = $('#progressBar').css('visibility');
+      visibilityValue = visibilityValue === 'visible' ? 'hidden' : 'visible';
+      $('#progressBar').css('visibility', visibilityValue);
+    }
 
   });
 });
