@@ -27,7 +27,7 @@ $(function () {
       $('#comp-loader').remove();
 
       $.ajax({
-        url: serverUrl.hosted + '/questions',
+        url: serverUrl.local + '/questions',
         headers: {
           'x-access-token': token
         },

@@ -10,7 +10,7 @@ $('#login-form form').submit(function (event) {
 
   $.ajax({
     type: "POST",
-    url: serverUrl.hosted+'/login',
+    url: serverUrl.local+'/login',
     // contentType: 'application/x-www-form-urlencoded; charset=UTF-8',
     data: {
       email: userEmail,
