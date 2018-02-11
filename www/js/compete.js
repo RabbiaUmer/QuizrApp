@@ -74,12 +74,22 @@ $(function () {
 
           // if the selected choice is the answer
           if (selectedChoice === correctAnswer) {
-            results.push({correct: true, answer: selectedChoice});
+            results.push({
+              correct: true,
+              answer: selectedChoice,
+              questionId: data[index]._id,
+              level: data[index].level
+            });
             selectAnswer('correct-answer', data, index, this, results);
 
           } else { // if the selectedChoice is not the answer
-            results.push({correct: false, answer: selectedChoice});
-            var correctBtn = $('.choice-btn[data-choice=\"' + correctAnswer + '\"]')
+            results.push({
+              correct: false,
+              answer: selectedChoice,
+              questionId: data[index]._id,
+              level: data[index].level
+            });
+            var correctBtn = $('.choice-btn[data-choice=\"' + correctAnswer + '\"]');
             selectAnswer('wrong-answer', data, index, this, results, correctBtn);
           }
         });
@@ -89,11 +99,27 @@ $(function () {
     }
 
     function submitResults(res, data) {
-      console.log(res);
       var numberOfCorrectAnswers = 0;
       res.forEach(function (data, index) {
         if (data.correct) {
           numberOfCorrectAnswers++;
+        }
+      });
+
+      $.ajax({
+        url: serverUrl.local + '/submit-single-player-results?categoryId=' + id,
+        headers: {
+          'x-access-token': token
+        },
+        type: 'POST',
+        error: function (err) {
+          console.log(err);
+        },
+        data: JSON.stringify({results: res}),
+        contentType: 'application/json',
+        async: true,
+        success: function (data) {
+          console.log(data);
         }
       });
 
