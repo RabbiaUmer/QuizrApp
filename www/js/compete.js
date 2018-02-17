@@ -118,8 +118,8 @@ $(function () {
         data: JSON.stringify({results: res}),
         contentType: 'application/json',
         async: true,
-        success: function (data) {
-          console.log(data);
+        success: function (result) {
+          console.log(result);
 
           // adding a little bit delay (2 seconds) before we remove everything after completing a quiz and before showing the results
           setTimeout(function () {
@@ -128,7 +128,23 @@ $(function () {
             toggleProgressBar();
             var percentageOfCorrectAnswers = (numberOfCorrectAnswers * 100) / data.length;
             console.log(percentageOfCorrectAnswers);
-          }, 2000)
+            $('#choices').append("<div class='center' id='results-message'></div>");
+            if (result.success) {
+              $('#results-message').append('<h3>>Congrats!!!</h3>\n<p>You passed the Quiz</p>\n');
+            } else {
+              $('#results-message').append('<h3>Uh..Oh!</h3>\n<p>You failed the Quiz</p>\n<p>You answered ' + Math.floor(percentageOfCorrectAnswers) + '% of questions correctly</p>\n');
+            }
+            $('#results-message').append('<button class="btn btn-primary">Continue</button>');
+            $('#results-message').one('click', function () {
+              $(':mobile-pagecontainer').pagecontainer("change", "home.html", {
+                role: "page",
+                transition: "fade",
+                changeHash: true,
+                reverse: false,
+                showLoadMsg: true
+              })
+            });
+          }, 1000)
         }
       });
     }
