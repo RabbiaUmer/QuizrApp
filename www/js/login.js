@@ -10,7 +10,7 @@ $('#login-form form').submit(function (event) {
 
   $.ajax({
     type: "POST",
-    url: serverUrl.local+'/login',
+    url: serverUrl.local + '/login',
     // contentType: 'application/x-www-form-urlencoded; charset=UTF-8',
     data: {
       email: userEmail,
@@ -20,7 +20,7 @@ $('#login-form form').submit(function (event) {
       if (res.success === true) {
         var localStorage = window.localStorage;
         localStorage.setItem("user-token", res.token);
-        openHomeScreen();
+        helper.openHomeScreen(true);
         $("#login-btn").prop("disabled", false);
       } else {
         addLoginError();
@@ -40,16 +40,6 @@ $('#login-form form').find("#login-email, #login-password").focus(function () {
 });
 
 // helper functions below (used in code above)
-function openHomeScreen() {
-  $(':mobile-pagecontainer').pagecontainer("change", "home.html", {
-    role: "page",
-    transition: "fade",
-    changeHash: true,
-    reverse: true,
-    showLoadMsg: true
-  })
-}
-
 function addLoginError() {
   $("#login-btn").prop("disabled", true);
   $('<p class="center login-error bg-danger">Please check your email or password!</p>').hide().appendTo('#login-form form').slideDown(500);

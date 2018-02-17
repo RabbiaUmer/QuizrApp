@@ -14,7 +14,7 @@ $('#signup-form form').submit(function (event) {
 
   $.ajax({
     type: "POST",
-    url: serverUrl.local+'/signup',
+    url: serverUrl.local + '/signup',
     data: {
       firstName: fName,
       lastName: lName,
@@ -25,7 +25,7 @@ $('#signup-form form').submit(function (event) {
       if (res.success === true) {
         var localStorage = window.localStorage;
         localStorage.setItem("user-token", res.token);
-        openHomeScreen();
+        helper.openHomeScreen(true);
         $("#signup-btn").prop("disabled", false);
       } else {
         addSignupError(res.message);
@@ -49,16 +49,6 @@ $('#signup-form form').find("#signup-email, #signup-password, #firstName, #lastN
 });
 
 // helper functions below (used in code above)
-function openHomeScreen() {
-  $(':mobile-pagecontainer').pagecontainer("change", "home.html", {
-    role: "page",
-    transition: "fade",
-    changeHash: true,
-    reverse: true,
-    showLoadMsg: true
-  })
-}
-
 function addSignupError(msg) {
   $("#signup-btn").prop("disabled", true);
   $('<p class="center signup-error bg-danger">' + msg + '</p>').hide().appendTo('#signup-form form').slideDown(500);
