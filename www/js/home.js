@@ -14,8 +14,10 @@ $(function () {
       $(".header").text(user.firstName + " " + user.lastName);
       $("#playerAvatar").attr("src", user.avatar);
       if (user.levels.length) {
-        user.levels.forEach(function (levelObj) {
-          $("#user-level-chart").append("<tr><th>Category</th><th>Level</th></tr><tr><td>" + levelObj.category.name + "</td><td>" + levelObj.level + "</td></tr>");
+        var tableHeadings = $("#user-level-chart").append("<tr><th>Category</th><th>Level</th></tr>");
+        user.levels.forEach(function (levelObj, index) {
+          var categoryRow = $("<tr><td>" + levelObj.category.name + "</td><td>" + levelObj.level + "</td></tr>").hide().delay(300 * index).fadeIn(1000);
+          tableHeadings.append(categoryRow);
         })
       }
     },
