@@ -119,7 +119,6 @@ $(function () {
         contentType: 'application/json',
         async: true,
         success: function (result) {
-          console.log(result);
 
           // adding a little bit delay (2 seconds) before we remove everything after completing a quiz and before showing the results
           setTimeout(function () {
@@ -127,7 +126,6 @@ $(function () {
             toggleQuestion();
             toggleProgressBar();
             var percentageOfCorrectAnswers = (numberOfCorrectAnswers * 100) / data.length;
-            console.log(percentageOfCorrectAnswers);
             $('#choices').append("<div class='center' id='results-message'></div>");
             if (result.success) {
               $('#results-message').append('<h3>>Congrats!!!</h3>\n<p>You passed the Quiz</p>\n');
