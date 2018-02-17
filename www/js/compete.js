@@ -120,17 +120,17 @@ $(function () {
         async: true,
         success: function (data) {
           console.log(data);
+
+          // adding a little bit delay (2 seconds) before we remove everything after completing a quiz and before showing the results
+          setTimeout(function () {
+            removeQuestionAnswers();
+            toggleQuestion();
+            toggleProgressBar();
+            var percentageOfCorrectAnswers = (numberOfCorrectAnswers * 100) / data.length;
+            console.log(percentageOfCorrectAnswers);
+          }, 2000)
         }
       });
-
-      // adding a little bit delay (2 seconds) before we remove everything after completing a quiz and before showing the results
-      setTimeout(function () {
-        removeQuestionAnswers();
-        toggleQuestion();
-        toggleProgressBar();
-        var percentageOfCorrectAnswers = (numberOfCorrectAnswers * 100) / data.length;
-        console.log(percentageOfCorrectAnswers);
-      }, 2000)
     }
 
     function selectAnswer(selectionClass, data, index, selectedButton, results, correctBtn) {
