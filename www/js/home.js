@@ -10,9 +10,14 @@ $(function () {
     type: "GET",
     headers: {"x-access-token": authToken}, // have to send token on every request for authentication
     url: serverUrl.local + '/user-profile',
-    success: function (res) {
-      $(".header").text(res.firstName + " " + res.lastName);
-      $("#playerAvatar").attr("src", res.avatar);
+    success: function (user) {
+      $(".header").text(user.firstName + " " + user.lastName);
+      $("#playerAvatar").attr("src", user.avatar);
+      if (user.levels.length) {
+        user.levels.forEach(function (levelObj) {
+          $("#user-level-chart").append("<tr><th>Category</th><th>Level</th></tr><tr><td>" + levelObj.category.name + "</td><td>" + levelObj.level + "</td></tr>");
+        })
+      }
     },
     dataType: "json"
   });
