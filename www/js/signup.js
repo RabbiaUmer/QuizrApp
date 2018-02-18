@@ -14,7 +14,7 @@ $('#signup-form form').submit(function (event) {
 
   $.ajax({
     type: "POST",
-    url: serverUrl.local + '/signup',
+    url: serverUrl.hosted + '/signup',
     data: {
       firstName: fName,
       lastName: lName,

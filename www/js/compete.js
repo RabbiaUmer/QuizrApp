@@ -27,7 +27,7 @@ $(function () {
       $('#comp-loader').remove();
 
       $.ajax({
-        url: serverUrl.local + '/questions',
+        url: serverUrl.hosted + '/questions',
         headers: {
           'x-access-token': token
         },
@@ -107,7 +107,7 @@ $(function () {
       });
 
       $.ajax({
-        url: serverUrl.local + '/submit-single-player-results?categoryId=' + id,
+        url: serverUrl.hosted + '/submit-single-player-results?categoryId=' + id,
         headers: {
           'x-access-token': token
         },

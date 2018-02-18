@@ -17,7 +17,7 @@ $(function () {
 
     var token = window.localStorage.getItem('user-token');
     $.ajax({
-      url: serverUrl.local+'/chooseAvatar',
+      url: serverUrl.hosted+'/chooseAvatar',
       type: 'GET',
       headers: {
         'x-access-token': token
@@ -41,7 +41,7 @@ $(function () {
         // ajax request to set the avatar on the backend, which will set it in the database
         $(".avatar").on("click", function () {
           $.ajax({
-            url: serverUrl.local+'/set-avatar',
+            url: serverUrl.hosted+'/set-avatar',
             data: {
               avatarName: $(this).attr("data-name"),
             },

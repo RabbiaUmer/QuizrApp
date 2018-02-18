@@ -21,7 +21,7 @@ $(function () {
     var token = window.localStorage.getItem('user-token');
 
     $.ajax({
-      url: serverUrl.local + '/categories',
+      url: serverUrl.hosted + '/categories',
       headers: {
         'x-access-token': token
       },
