@@ -16,7 +16,7 @@ $(function () {
       if (user.levels.length) {
         var tableHeadings = $("#user-level-chart").append("<tr><th>Category</th><th>Level</th></tr>");
         user.levels.forEach(function (levelObj, index) {
-          var categoryRow = $("<tr><td>" + levelObj.category.name + "</td><td>" + levelObj.level + "</td></tr>").hide().delay(300 * index).fadeIn(1000);
+          var categoryRow = $("<tr><td><a href='../compete.html?id=" + levelObj.category._id + "&name=" + levelObj.category.name + "&challengeType=single'>" + levelObj.category.name + "</a></td><td>" + levelObj.level + "</td></tr>").hide().delay(300 * index).fadeIn(1000);
           tableHeadings.append(categoryRow);
         })
       }
