@@ -27,26 +27,13 @@ $(function () {
   // Once the buttons have been added, attach the click event on them
   $('.single-player-btn').on('click', function (event) {
     event.preventDefault();
-    pageContainerChange('single');
+    helper.openCategoriesScreen('single');
   });
 
   $('.multiple-player-btn').on('click', function (event) {
     event.preventDefault();
-    pageContainerChange('multiple');
+    helper.openCategoriesScreen('multiple');
   });
-
-  function pageContainerChange(challengeType) {
-    $(':mobile-pagecontainer').pagecontainer("change", "categories.html", {
-      role: "page",
-      transition: "fade",
-      changeHash: true,
-      reverse: true,
-      showLoadMsg: true,
-      data: {
-        challenge: challengeType
-      }
-    })
-  }
 
 
   $("#logout-btn").on("click", function (event) {

@@ -8,5 +8,18 @@ var helper = {
       reverse: reverse,
       showLoadMsg: true
     })
+  },
+
+  openCategoriesScreen: function (challengeType) {
+    $(':mobile-pagecontainer').pagecontainer("change", "categories.html", {
+      role: "page",
+      transition: "fade",
+      changeHash: true,
+      reverse: true,
+      showLoadMsg: true,
+      data: {
+        challenge: challengeType
+      }
+    })
   }
 };
