@@ -23,10 +23,11 @@ $(function () {
     },
     dataType: "json"
   });
+
+  var config = {data: {}};
   // Once the buttons have been added, attach the click event on them
   $('.single-player-btn').on('click', function (event) {
     event.preventDefault();
-    var config = {data: {}};
     config.data.challenge = 'single';
     console.log(config);
     helper.changeScreen("categories.html", config);
@@ -34,7 +35,6 @@ $(function () {
 
   $('.multiple-player-btn').on('click', function (event) {
     event.preventDefault();
-    var config = {data: {}};
     config.data.challenge = 'multiple';
     console.log(config);
     helper.changeScreen("categories.html", config);
