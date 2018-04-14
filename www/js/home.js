@@ -29,14 +29,12 @@ $(function () {
   $('.single-player-btn').on('click', function (event) {
     event.preventDefault();
     config.data.challenge = 'single';
-    console.log(config);
     helper.changeScreen("categories.html", config);
   });
 
   $('.multiple-player-btn').on('click', function (event) {
     event.preventDefault();
     config.data.challenge = 'multiple';
-    console.log(config);
     helper.changeScreen("categories.html", config);
   });
 
