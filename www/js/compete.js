@@ -134,14 +134,7 @@ $(function () {
             }
             $('#results-message').append('<button class="btn btn-primary">Continue</button>');
             $('#results-message').one('click', function () {
-              helper.openHomeScreen(false)
-              $(':mobile-pagecontainer').pagecontainer("change", "home.html", {
-                role: "page",
-                transition: "fade",
-                changeHash: true,
-                reverse: false,
-                showLoadMsg: true
-              })
+              helper.changeScreen("home.html", {reverse: false});
             });
           }, 1000)
         }

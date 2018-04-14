@@ -25,7 +25,7 @@ $('#signup-form form').submit(function (event) {
       if (res.success === true) {
         var localStorage = window.localStorage;
         localStorage.setItem("user-token", res.token);
-        helper.openHomeScreen(true);
+        helper.changeScreen("home.html", {reverse: true});
         $("#signup-btn").prop("disabled", false);
       } else {
         addSignupError(res.message);
