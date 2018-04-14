@@ -47,7 +47,8 @@ $(function () {
               challengeType: challengeType
             }
           };
-          helper.changeScreen("compete.html", config);
+          var pageName = challengeType === 'single' ? 'compete.html' : 'multiplayer-compete.html';
+          helper.changeScreen(pageName, config);
         });
 
         /* adding interval since jquery mobile allows to call hide/show loader events
