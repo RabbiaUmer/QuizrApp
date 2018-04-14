@@ -40,19 +40,14 @@ $(function () {
         // Once the buttons have been added, attach the click event on them
         $('.category-btn').on('click', function (event) {
           event.preventDefault();
-
-          $(':mobile-pagecontainer').pagecontainer("change", "compete.html", {
-            role: "page",
-            transition: "fade",
-            changeHash: true,
-            reverse: true,
-            showLoadMsg: true,
+          var config = {
             data: {
               id: $(this).attr("data-id"),
               name: $(this).attr("data-name"),
               challengeType: challengeType
             }
-          })
+          };
+          helper.changeScreen("compete.html", config);
         });
 
         /* adding interval since jquery mobile allows to call hide/show loader events
