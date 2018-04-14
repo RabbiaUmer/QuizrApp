@@ -1,17 +1,5 @@
 // name spacing the helper file, so that we know in the codebase that we're referring a helper function from here
 var helper = {
-  openCategoriesScreen: function (challengeType) {
-    $(':mobile-pagecontainer').pagecontainer("change", "categories.html", {
-      role: "page",
-      transition: "fade",
-      changeHash: true,
-      reverse: true,
-      showLoadMsg: true,
-      data: {
-        challenge: challengeType
-      }
-    })
-  },
   changeScreen(pageName, config) {
     // If configs are provided use those, otherwise fallback to dfault
     var preparedConfigs = {
