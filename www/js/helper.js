@@ -15,5 +15,11 @@ var helper = {
   },
   getAuthToken: function () {
     return window.localStorage.getItem("user-token");
+  },
+  setAuthToken: function (token) {
+    return window.localStorage.setItem("user-token", token);
+  },
+  clearAuthToken: function () {
+    return window.localStorage.clearItem("user-token");
   }
 };
