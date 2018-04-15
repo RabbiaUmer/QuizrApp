@@ -12,5 +12,8 @@ var helper = {
     };
 
     $(':mobile-pagecontainer').pagecontainer("change", pageName, preparedConfigs)
+  },
+  getAuthToken: function () {
+    return window.localStorage.getItem("user-token");
   }
 };
