@@ -20,6 +20,6 @@ var helper = {
     return window.localStorage.setItem("user-token", token);
   },
   clearAuthToken: function () {
-    return window.localStorage.clearItem("user-token");
+    return window.localStorage.removeItem("user-token");
   }
 };
