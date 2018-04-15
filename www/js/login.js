@@ -23,7 +23,7 @@ $(function () {
       success: function (res) {
         if (res.success === true) {
           var localStorage = window.localStorage;
-          localStorage.setItem("user-token", res.token);
+          helper.setAuthToken(res.token);
           helper.changeScreen("home.html", {reverse: true});
           $("#login-btn").prop("disabled", false);
         } else {

@@ -9,7 +9,7 @@ document.addEventListener("backbutton", onBackButton, false);
 // Handle the logic for the back-button for entire app here, since the event is attached to the document
 function onBackButton() {
   var pageName = $(":mobile-pagecontainer").pagecontainer("getActivePage").attr("id");
-  var isTokenSet = window.localStorage.getItem("user-token");
+  var isTokenSet = helper.getAuthToken();
   if (pageName === "main-screen") {
     navigator.app.exitApp();
   } else if (pageName === "login-screen") {
@@ -35,7 +35,7 @@ function onDeviceReady() {
     authenticateUser("login.html");
   } else {
 
-    $.ajax(serverUrl.hosted+'/authenticate', {headers: {"x-access-token": authToken}})
+    $.ajax(serverUrl.hosted + '/authenticate', {headers: {"x-access-token": authToken}})
       .done(function (data) {
         if (data.success) { // if token is not expired
 

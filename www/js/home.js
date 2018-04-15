@@ -5,7 +5,7 @@
 $(function () {
 
   // Fire off a request to fetch user information as soon as the page loads
-  var authToken = window.localStorage.getItem("user-token");
+  var authToken = helper.getAuthToken();
   $.ajax({
     type: "GET",
     headers: {"x-access-token": authToken}, // have to send token on every request for authentication
