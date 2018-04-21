@@ -35,6 +35,12 @@ $(function () {
         index++;
       }
     }, 1000);
+
+    socket.emit('matchPlayer');
+    socket.on('updateFreePlayers', function (data) {
+      console.log(data.players);
+      $('#available-players').text(data.players.length);
+    });
   });
 
 });
