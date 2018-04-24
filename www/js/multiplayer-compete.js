@@ -45,7 +45,6 @@ $(function () {
 
     socket.emit('matchPlayer');
     socket.on('freePlayers', function (players) {
-      console.log(players);
       $('#available-players').text(players.count);
     });
 
