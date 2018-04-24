@@ -39,6 +39,7 @@ $(function () {
     $(':mobile-pagecontainer').pagecontainer({
       beforehide: function () {
         clearInterval(randomAvatarsDisplayInterval);
+        socket.emit('leaveMatch');
       }
     });
 
