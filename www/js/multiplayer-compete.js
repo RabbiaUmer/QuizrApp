@@ -36,10 +36,20 @@ $(function () {
       }
     }, 1000);
 
+    $(':mobile-pagecontainer').pagecontainer({
+      beforehide: function () {
+        clearInterval(randomAvatarsDisplayInterval);
+      }
+    });
+
     socket.emit('matchPlayer');
-    socket.on('updateFreePlayers', function (data) {
-      console.log(data.players);
-      $('#available-players').text(data.players.length);
+    socket.on('freePlayers', function (players) {
+      console.log(players);
+      $('#available-players').text(players.count);
+    });
+
+    socket.on('totalPlayers', function (players) {
+      $('#total-players').text(players.count);
     });
   });
 
