@@ -52,7 +52,7 @@ $(function () {
   });
 
 
-  if (!socket || socket.connected) {
+  if (!socket || !socket.connected) {
     socket = helper.connectSocket(serverUrl.hosted, helper.getAuthToken());
 
     socket.on('connect', function (socket) {
