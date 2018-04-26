@@ -39,7 +39,6 @@ $(function () {
           console.log(err);
         },
         contentType: 'text/plain',
-        async: true,
         success: function (data) {
 
           toggleProgressBar();
@@ -117,7 +116,6 @@ $(function () {
         },
         data: JSON.stringify({results: res}),
         contentType: 'application/json',
-        async: true,
         success: function (result) {
 
           // adding a little bit delay (2 seconds) before we remove everything after completing a quiz and before showing the results

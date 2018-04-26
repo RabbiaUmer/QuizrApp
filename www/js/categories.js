@@ -30,7 +30,6 @@ $(function () {
         console.log(err);
       },
       contentType: 'text/plain',
-      async: true,
       success: function (languages) {
 
         languages.forEach(function (language) {
