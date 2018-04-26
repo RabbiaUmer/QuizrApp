@@ -49,20 +49,5 @@
 <!--Following scripts have to be in a the order they're included, otherwise it will break the project-->
 <script src="js/helper.js"></script>
 <script src="js/main.js"></script>
-<script>
-  socket = helper.connectSocket(serverUrl.hosted);
-
-  socket.on('connect', function (socket) {
-    console.log('authenticated');
-
-  }).on('disconnect', function () {
-    console.log('disconnected');
-  });
-
-  socket.on('reconnect', function (attemptNumber) {
-    console.log(attemptNumber);
-  });
-
-</script>
 </body>
 </html>
