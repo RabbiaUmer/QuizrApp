@@ -42,6 +42,7 @@ $(function () {
   $("#logout-btn").on("click", function (event) {
     event.preventDefault();
     window.localStorage.removeItem("user-token");
+    socket.disconnect();
     $(':mobile-pagecontainer').pagecontainer("change", "login.html", {
       role: "page",
       transition: "fade",
