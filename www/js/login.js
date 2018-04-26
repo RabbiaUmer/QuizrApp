@@ -21,6 +21,7 @@ $(function () {
         password: userPassword
       },
       success: function (res) {
+        // ONCE THE USER HAS BEEN SUCCESSFULLY LOGGED IN
         if (res.success === true) {
           var localStorage = window.localStorage;
           helper.setAuthToken(res.token);
@@ -29,6 +30,7 @@ $(function () {
         } else {
           addLoginError();
         }
+        socket = helper.connectSocket(serverUrl.hosted, res.token);
       },
       dataType: "json"
     });

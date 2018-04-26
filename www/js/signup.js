@@ -22,6 +22,7 @@ $('#signup-form form').submit(function (event) {
       password: userPassword
     },
     success: function (res) {
+      // ONCE THE USER HAS BEEN SUCCESSFULLY LOGGED IN
       if (res.success === true) {
         var localStorage = window.localStorage;
         helper.setAuthToken(res.token);
@@ -30,6 +31,7 @@ $('#signup-form form').submit(function (event) {
       } else {
         addSignupError(res.message);
       }
+      socket = helper.connectSocket(serverUrl.hosted, res.token);
     },
     error: function (res) {
       addSignupError(res.responseJSON.message);
