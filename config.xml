@@ -5,7 +5,7 @@
     <author email="support@phonegap.com" href="http://phonegap.com">Hafiza Rabbia Umer</author>
     <content src="index.html" />
     <preference name="DisallowOverscroll" value="true" />
-    <preference name="android-minSdkVersion" value="14" />
+    <preference name="android-minSdkVersion" value="10" />
     <icon src="icon.png" />
     <platform name="android">
         <icon density="mdpi" src="www/res/icon/android/quizr_launcher-mdpi.png" />
