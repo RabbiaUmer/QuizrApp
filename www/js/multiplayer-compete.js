@@ -51,6 +51,10 @@ $(function () {
     socket.on('totalPlayers', function (players) {
       $('#total-players').text(players.count);
     });
+
+    socket.on('matchingPlayers', function (players) {
+      $('#matching-players').text(players.count);
+    });
   });
 
 });
