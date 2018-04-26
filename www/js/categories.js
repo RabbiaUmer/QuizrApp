@@ -6,7 +6,7 @@ $(function () {
 
   // use one instead of on, so that we don't have multiple pagecreate events attached to the same documents,
   // reference here http://stackoverflow.com/a/22585583/1609548 , https://api.jquery.com/one/
-  $('#categories-selection').on("pageshow", function (event) {
+  $('#categories-selection').one("pageshow", function (event) {
 
     var challengeType = $(this).data("url").split("?")[1].split('=')[1];
 
