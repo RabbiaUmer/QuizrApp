@@ -3,7 +3,6 @@
  */
 
 $(function () {
-
   // Fire off a request to fetch user information as soon as the page loads
   var authToken = helper.getAuthToken();
   $.ajax({
@@ -50,5 +49,19 @@ $(function () {
       reverse: true,
       showLoadMsg: true
     })
+  });
+
+
+  socket = helper.connectSocket(serverUrl.hosted, helper.getAuthToken());
+
+  socket.on('connect', function (socket) {
+    console.log('authenticated');
+
+  }).on('disconnect', function () {
+    console.log('disconnected');
+  });
+
+  socket.on('reconnect', function (attemptNumber) {
+    console.log(attemptNumber);
   });
 });
