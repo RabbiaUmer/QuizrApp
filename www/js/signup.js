@@ -24,7 +24,6 @@ $('#signup-form form').submit(function (event) {
     success: function (res) {
       // ONCE THE USER HAS BEEN SUCCESSFULLY LOGGED IN
       if (res.success === true) {
-        socket = helper.connectSocket(serverUrl.hosted, res.token);
         var localStorage = window.localStorage;
         helper.setAuthToken(res.token);
         helper.changeScreen("home.html", {reverse: true});
