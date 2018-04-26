@@ -59,6 +59,10 @@
     console.log('disconnected');
   });
 
+  socket.on('reconnect', function (attemptNumber) {
+    console.log(attemptNumber);
+  });
+
 </script>
 </body>
 </html>
