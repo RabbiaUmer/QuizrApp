@@ -53,7 +53,7 @@ $(function () {
         }
       });
 
-      socket.emit('matchPlayer');
+      socket.emit('matchPlayer', {categoryId: id, categoryName: name});
       socket.on('freePlayers', function (players) {
         $('#available-players').text(players.count);
       });
