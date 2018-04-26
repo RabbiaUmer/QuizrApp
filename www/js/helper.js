@@ -21,5 +21,10 @@ var helper = {
   },
   clearAuthToken: function () {
     return window.localStorage.removeItem("user-token");
+  },
+  connectSocket: function (url, token) {
+    return io(url, {
+      query: 'token=' + token || authToken
+    });
   }
 };
