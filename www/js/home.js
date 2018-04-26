@@ -52,16 +52,18 @@ $(function () {
   });
 
 
-  socket = helper.connectSocket(serverUrl.hosted, helper.getAuthToken());
+  if (!socket || socket.connected) {
+    socket = helper.connectSocket(serverUrl.hosted, helper.getAuthToken());
 
-  socket.on('connect', function (socket) {
-    console.log('authenticated');
+    socket.on('connect', function (socket) {
+      console.log('authenticated');
 
-  }).on('disconnect', function () {
-    console.log('disconnected');
-  });
+    }).on('disconnect', function () {
+      console.log('disconnected');
+    });
 
-  socket.on('reconnect', function (attemptNumber) {
-    console.log(attemptNumber);
-  });
+    socket.on('reconnect', function (attemptNumber) {
+      console.log(attemptNumber);
+    });
+  }
 });
