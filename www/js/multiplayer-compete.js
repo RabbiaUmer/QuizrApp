@@ -46,11 +46,10 @@ $(function () {
         }
       }, 1000);
 
-      $(':mobile-pagecontainer').pagecontainer({
-        beforehide: function () {
-          clearInterval(randomAvatarsDisplayInterval);
-          socket.emit('leaveMatch');
-        }
+      var dataToBeSentWithSockets = {categoryId: id, categoryName: name}
+      $('#compete-screen').one('pagebeforehide', function () {
+        clearInterval(randomAvatarsDisplayInterval);
+        socket.emit('leaveMatch', dataToBeSentWithSockets);
       });
 
       socket.emit('matchPlayer', {categoryId: id, categoryName: name});
@@ -65,6 +64,15 @@ $(function () {
       socket.on('matchingPlayers', function (players) {
         $('#matching-players').text(players.count);
       });
+
+      socket.on('matched', function () {
+        $('#pre-match').remove();
+      });
+
+      socket.on('playerLeft', function () {
+        alert('Player has left the game');
+        helper.changeScreen('home.html', {reverse: false});
+      })
     });
   });
 
