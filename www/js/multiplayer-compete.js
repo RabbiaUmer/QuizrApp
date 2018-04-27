@@ -46,11 +46,15 @@ $(function () {
         }
       }, 1000);
 
-      var dataToBeSentWithSockets = {categoryId: id, categoryName: name}
-      $('#compete-screen').one('pagebeforehide', function () {
-        clearInterval(randomAvatarsDisplayInterval);
-        socket.emit('leaveMatch', dataToBeSentWithSockets);
-      });
+      var dataToBeSentWithSockets = {categoryId: id, categoryName: name};
+      var socketEvents = {
+        matchPlayer: 'matchPlayer',
+        freePlayers: 'freePlayers',
+        totalPlayers: 'totalPlayers',
+        matchingPlayers: 'matchingPlayers',
+        matched: 'matched',
+        playerLeft: 'playerLeft'
+      }
 
       socket.emit('matchPlayer', {categoryId: id, categoryName: name});
       socket.on('freePlayers', function (players) {
@@ -70,9 +74,19 @@ $(function () {
       });
 
       socket.on('playerLeft', function () {
-        alert('Player has left the game');
+        confirm('Player has left the game');
         helper.changeScreen('home.html', {reverse: false});
       })
+
+      // Before removing page do this
+      $('#compete-screen').one('pagebeforehide', function () {
+        clearInterval(randomAvatarsDisplayInterval);
+        socket.emit('leaveMatch', dataToBeSentWithSockets);
+        Object.keys(socketEvents).forEach(function (socketEvent) {
+          socket.off(socketEvents[socketEvent]);
+        });
+      });
+
     });
   });
 
