@@ -10,7 +10,7 @@ $(function () {
     headers: {"x-access-token": authToken}, // have to send token on every request for authentication
     url: serverUrl.hosted + '/user-profile',
     success: function (user) {
-      localStorage.setItem('email', user.email);
+      window.localStorage.setItem('email', user.email);
       $(".header").text(user.firstName + " " + user.lastName);
       $("#playerAvatar").attr("src", user.avatar);
       if (user.levels.length) {
@@ -42,6 +42,7 @@ $(function () {
   $("#logout-btn").on("click", function (event) {
     event.preventDefault();
     window.localStorage.removeItem("user-token");
+    window.localStorage.removeItem("email")
     socket.disconnect();
     $(':mobile-pagecontainer').pagecontainer("change", "login.html", {
       role: "page",
@@ -54,7 +55,7 @@ $(function () {
 
 
   if (!socket || !socket.connected) {
-    socket = helper.connectSocket('192.168.0.11:8000', helper.getAuthToken());
+    socket = helper.connectSocket(serverUrl.hosted, helper.getAuthToken());
 
     socket.on('connect', function (socket) {
       console.log('authenticated');
