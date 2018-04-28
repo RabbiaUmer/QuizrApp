@@ -1,6 +1,7 @@
 $(function () {
 
   $('#compete-screen').one("pageshow", function (event) {
+    $('#post-match').hide();
 
     var params = $(this).data("url").split("?")[1]; // retrieveing url parameters
     var emptyString = ""; // will be used to clear up the string
@@ -69,8 +70,40 @@ $(function () {
         $('#matching-players').text(players.count);
       });
 
-      socket.on('matched', function () {
+      socket.on('matched', function (players) {
         $('#pre-match').remove();
+        $('#post-match').remove();
+
+        $.when(
+          $.ajax({
+            type: "GET",
+            headers: {"x-access-token": helper.getAuthToken()}, // have to send token on every request for authentication
+            data: {
+              avatar: players[0].avatar
+            },
+            url: serverUrl.hosted + '/avatar'
+          }),
+          $.ajax({
+            type: "GET",
+            headers: {"x-access-token": helper.getAuthToken()}, // have to send token on every request for authentication
+            data: {
+              avatar: players[1].avatar
+            },
+            url: serverUrl.hosted + '/avatar'
+          })
+        ).then(function (avatar1, avatar2) {
+          players[0].avatar = avatar1[0];
+          players[1].avatar = avatar2[0];
+          console.log(players);
+          $('#player-1 img').attr('src', players[0].avatar);
+          $('#player-2 img').attr('src', players[1].avatar);
+
+          $('#player-1 #name').text(players[0].firstName);
+          $('#player-2 #name').text(players[1].firstName);
+
+
+
+        });
       });
 
       socket.on('playerLeft', function () {

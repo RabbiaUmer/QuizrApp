@@ -53,7 +53,7 @@ $(function () {
 
 
   if (!socket || !socket.connected) {
-    socket = helper.connectSocket(serverUrl.hosted, helper.getAuthToken());
+    socket = helper.connectSocket('192.168.0.11:8000', helper.getAuthToken());
 
     socket.on('connect', function (socket) {
       console.log('authenticated');
