@@ -58,7 +58,8 @@ $(function () {
         playerLeft: 'playerLeft',
         startMatch: 'startMatch',
         questions: 'questions',
-        failed: 'failed'
+        failed: 'failed',
+        answer: 'answer'
       }
 
       socket.emit('matchPlayer', {categoryId: id, categoryName: name});
@@ -98,7 +99,7 @@ $(function () {
         ).then(function (avatar1, avatar2) {
           players[0].avatar = avatar1[0];
           players[1].avatar = avatar2[0];
-          console.log(players);
+
           $('#player-1 img').attr('src', players[0].avatar);
           $('#player-2 img').attr('src', players[1].avatar);
 
@@ -110,15 +111,21 @@ $(function () {
           console.log(currentUser);
 
           socket.emit('startMatch', dataToBeSentWithSockets);
-          socket.on('questions', function (questions) {
-            showQuestionsAndAnswers(questions, 0, []);
+          var questions;
+          var results = [];
+          socket.on('questions', function (response) {
+            questions = response;
+            showQuestionsAndAnswers(questions, 0, results);
           });
 
           socket.on('failed', function (data) {
-            console.log(data);
-            removeQuestionAnswers();
-            toggleQuestion();
-            showHideQuestionAnswers(questions, data, []);
+            // stop if last index
+            var index = questions.length - 1 === data ? null : data + 1
+            if (index) {
+              removeQuestionAnswers();
+              toggleQuestion();
+              showQuestionsAndAnswers(questions, data + 1, results);
+            }
           })
 
 
@@ -145,6 +152,7 @@ $(function () {
           // once the question and choices has been shown the first time, add the event on button click
           // using one instead of one, so that if user keeps on clicking the same button, it wouldn't fire the callback each time
           $('.choice-btn').one('click', function () {
+            console.log('clicked');
             var selectedChoice = $(this).attr('data-choice');
             var correctAnswer = data[index].answer;
 
@@ -156,7 +164,6 @@ $(function () {
                 questionId: data[index]._id,
                 level: data[index].level
               });
-              socket.emit('correctAnswer', {correct: true, user: currentUser, index: index});
               selectAnswer('correct-answer', data, index, this, results);
             } else { // if the selectedChoice is not the answer
               results.push({
@@ -168,6 +175,7 @@ $(function () {
               var correctBtn = $('.choice-btn[data-choice=\"' + correctAnswer + '\"]');
               selectAnswer('wrong-answer', data, index, this, results, correctBtn);
             }
+            socket.emit('answered', {user: currentUser, index: index});
           });
         } else {
           submitResults(results, data);
@@ -181,7 +189,7 @@ $(function () {
             numberOfCorrectAnswers++;
           }
         });
-
+        
         console.log(numberOfCorrectAnswers);
       }
 
@@ -205,7 +213,7 @@ $(function () {
           // remove the current choices & question
           index++;
           showQuestionsAndAnswers(data, index, results);
-        }, 1000);
+        }, 200);
       }
 
       function removeQuestionAnswers() {
