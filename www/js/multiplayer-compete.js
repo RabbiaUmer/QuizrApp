@@ -110,7 +110,6 @@ $(function () {
 
           var thisUserEmail = localStorage.getItem('email');
           currentUser = players[0].email === thisUserEmail ? players[0] : players[1];
-          console.log(currentUser);
 
           socket.emit('startMatch', dataToBeSentWithSockets);
           var questions;
@@ -134,7 +133,6 @@ $(function () {
 
           socket.on('results', function (response) {
             socket.off('playerLeft');
-            console.log(response);
             var result = response.result;
 
             // adding a little bit delay (2 seconds) before we remove everything after completing a quiz and before showing the results
@@ -180,7 +178,6 @@ $(function () {
           // once the question and choices has been shown the first time, add the event on button click
           // using one instead of one, so that if user keeps on clicking the same button, it wouldn't fire the callback each time
           $('.choice-btn').one('click', function () {
-            console.log('clicked');
             var selectedChoice = $(this).attr('data-choice');
             var correctAnswer = data[index].answer;
 
