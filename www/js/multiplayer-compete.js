@@ -133,6 +133,7 @@ $(function () {
 
           socket.on('results', function (response) {
             socket.off('playerLeft');
+            socket.emit('leaveMatch', dataToBeSentWithSockets);
             var result = response.result;
 
             // adding a little bit delay (2 seconds) before we remove everything after completing a quiz and before showing the results
