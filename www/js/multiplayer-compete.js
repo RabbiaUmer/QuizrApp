@@ -59,7 +59,9 @@ $(function () {
         startMatch: 'startMatch',
         questions: 'questions',
         failed: 'failed',
-        answer: 'answer'
+        answer: 'answer',
+        submitResults: 'submitResults',
+        results: 'results'
       }
 
       socket.emit('matchPlayer', {categoryId: id, categoryName: name});
@@ -125,9 +127,14 @@ $(function () {
               removeQuestionAnswers();
               toggleQuestion();
               showQuestionsAndAnswers(questions, data + 1, results);
+            } else {
+              submitResults(results, questions)
             }
           })
 
+          socket.on('results', function (data) {
+            console.log(data);
+          })
 
         });
       });
@@ -189,8 +196,9 @@ $(function () {
             numberOfCorrectAnswers++;
           }
         });
-        
+
         console.log(numberOfCorrectAnswers);
+        socket.emit('submitResults', {correct: numberOfCorrectAnswers, user: currentUser});
       }
 
       function selectAnswer(selectionClass, data, index, selectedButton, results, correctBtn) {
