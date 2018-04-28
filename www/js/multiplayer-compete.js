@@ -132,8 +132,29 @@ $(function () {
             }
           })
 
-          socket.on('results', function (data) {
-            console.log(data);
+          socket.on('results', function (response) {
+            socket.off('playerLeft');
+            console.log(response);
+            var result = response.result;
+
+            // adding a little bit delay (2 seconds) before we remove everything after completing a quiz and before showing the results
+            setTimeout(function () {
+              removeQuestionAnswers();
+              toggleQuestion();
+              $('#questions').remove();
+              $('#choices').append("<div class='center' id='results-message'></div>");
+              if (result === 'won') {
+                $('#results-message').append('<h3>Congrats!!!</h3>\n<p>You won the match!</p>\n');
+              } else if (result === 'lost') {
+                $('#results-message').append('<h3>Uh..Oh!</h3>\n<p>You lost the match!</p>\n');
+              } else if (result === 'draw') {
+                $('#results-message').append('<h3>Uh..Oh!</h3>\n<p>This match was a Draw!</p>\n');
+              }
+              $('#results-message').append('<button class="btn btn-primary">Continue</button>');
+              $('#results-message').one('click', function () {
+                helper.changeScreen("home.html", {reverse: false});
+              });
+            }, 1000)
           })
 
         });
@@ -197,7 +218,6 @@ $(function () {
           }
         });
 
-        console.log(numberOfCorrectAnswers);
         socket.emit('submitResults', {correct: numberOfCorrectAnswers, user: currentUser});
       }
 

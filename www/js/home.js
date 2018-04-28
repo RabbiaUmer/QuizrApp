@@ -10,6 +10,7 @@ $(function () {
     headers: {"x-access-token": authToken}, // have to send token on every request for authentication
     url: serverUrl.hosted + '/user-profile',
     success: function (user) {
+      localStorage.setItem('email', user.email);
       $(".header").text(user.firstName + " " + user.lastName);
       $("#playerAvatar").attr("src", user.avatar);
       if (user.levels.length) {
