@@ -126,7 +126,7 @@ $(function () {
             var percentageOfCorrectAnswers = (numberOfCorrectAnswers * 100) / data.length;
             $('#choices').append("<div class='center' id='results-message'></div>");
             if (result.success) {
-              $('#results-message').append('<h3>>Congrats!!!</h3>\n<p>You passed the Quiz</p>\n');
+              $('#results-message').append('<h3>Congrats!!!</h3>\n<p>You passed the Quiz</p>\n');
             } else {
               $('#results-message').append('<h3>Uh..Oh!</h3>\n<p>You failed the Quiz</p>\n<p>You answered ' + Math.floor(percentageOfCorrectAnswers) + '% of questions correctly</p>\n');
             }
